@@ -1,0 +1,6 @@
+usr/local/bin/gemma-qt usr/bin
+share/pixmaps/gemma32.xpm usr/share/pixmaps
+share/pixmaps/gemma16.xpm usr/share/pixmaps
+share/pixmaps/gemma128.png usr/share/pixmaps
+debian/gemma-qt.desktop usr/share/applications
+debian/gemma-qt.protocol usr/share/kde4/services/

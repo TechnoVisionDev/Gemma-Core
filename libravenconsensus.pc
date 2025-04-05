@@ -1,0 +1,11 @@
+prefix=/usr/local
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: Gemma Core consensus library
+Description: Library for the Gemma consensus protocol.
+Version: 4.6.1
+Libs: -L${libdir} -lgemmaconsensus
+Cflags: -I${includedir}
+Requires.private: libcrypto

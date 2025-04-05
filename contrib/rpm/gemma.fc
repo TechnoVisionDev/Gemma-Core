@@ -1,0 +1,8 @@
+/usr/bin/gemma-cli		--	gen_context(system_u:object_r:gemma_exec_t,s0)
+/usr/sbin/gemmad		--	gen_context(system_u:object_r:gemma_exec_t,s0)
+/usr/lib(64)?/gemma/gemmad		--	gen_context(system_u:object_r:gemma_exec_t,s0)
+
+/etc/gemma(/.*)?		gen_context(system_u:object_r:gemma_conf_t,s0)
+/var/lib/gemma(/.*)?		gen_context(system_u:object_r:gemma_var_lib_t,s0)
+
+(/var)?/run/gemmad(/.*)?   gen_context(system_u:object_r:gemma_var_run_t,s0)

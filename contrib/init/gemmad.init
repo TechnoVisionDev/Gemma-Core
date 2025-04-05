@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  gemmad The gemma core server.
+#
+#
+# chkconfig: 345 80 20
+# description: gemmad
+# processname: gemmad
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/gemmad, see below
+if [ -f /etc/sysconfig/gemmad ]; then
+        . /etc/sysconfig/gemmad
+fi
+
+RETVAL=0
+
+prog=gemmad
+# you can override the lockfile via RAVEND_LOCKFILE in /etc/sysconfig/gemmad
+lockfile=${RAVEND_LOCKFILE-/var/lock/subsys/gemmad}
+
+# gemmad defaults to /usr/bin/gemmad, override with RAVEND_BIN
+gemmad=${RAVEND_BIN-/usr/bin/gemmad}
+
+# gemmad opts default to -disablewallet, override with RAVEND_OPTS
+gemmad_opts=${RAVEND_OPTS--disablewallet}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $gemmad $gemmad_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Gemma Core
+Comment=Connect to the Gemma P2P Network
+Comment[de]=Verbinde mit dem Gemma peer-to-peer Netzwerk
+Comment[fr]=Gemma, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Gemma, eşten eşe kriptografik sanal para birimi
+Exec=gemma-qt %u
+Terminal=false
+Type=Application
+Icon=gemma128
+MimeType=x-scheme-handler/gemma;
+Categories=Office;Finance;

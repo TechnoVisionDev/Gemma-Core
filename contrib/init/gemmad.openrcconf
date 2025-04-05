@@ -1,0 +1,33 @@
+# /etc/conf.d/gemmad: config file for /etc/init.d/gemmad
+
+# Config file location
+#RAVEND_CONFIGFILE="/etc/gemma/gemma.conf"
+
+# What directory to write pidfile to?  (created and owned by $RAVEND_USER)
+#RAVEND_PIDDIR="/var/run/gemmad"
+
+# What filename to give the pidfile
+#RAVEND_PIDFILE="${RAVEND_PIDDIR}/gemmad.pid"
+
+# Where to write gemmad data (be mindful that the blockchain is large)
+#RAVEND_DATADIR="/var/lib/gemmad"
+
+# User and group to own gemmad process
+#RAVEND_USER="gemma"
+#RAVEND_GROUP="gemma"
+
+# Path to gemmad executable
+#RAVEND_BIN="/usr/bin/gemmad"
+
+# Nice value to run gemmad under
+#RAVEND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#RAVEND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for gemmad to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+RAVEND_SIGTERM_TIMEOUT=60

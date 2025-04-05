@@ -1,0 +1,81 @@
+policy_module(gemma, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type gemma_t;
+type gemma_exec_t;
+init_daemon_domain(gemma_t, gemma_exec_t)
+
+permissive gemma_t;
+
+type gemma_initrc_exec_t;
+init_script_file(gemma_initrc_exec_t)
+
+type gemma_conf_t;
+files_type(gemma_conf_t)
+
+type gemma_var_lib_t;
+files_type(gemma_var_lib_t)
+
+type gemma_var_run_t;
+files_type(gemma_var_run_t)
+
+type gemma_port_t;
+corenet_port(gemma_port_t)
+
+########################################
+#
+# gemma local policy
+#
+allow gemma_t self:process { fork };
+
+allow gemma_t self:fifo_file rw_fifo_file_perms;
+allow gemma_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(gemma_t, gemma_conf_t, gemma_conf_t)
+manage_files_pattern(gemma_t, gemma_conf_t, gemma_conf_t)
+
+manage_dirs_pattern(gemma_t, gemma_var_lib_t, gemma_var_lib_t)
+manage_files_pattern(gemma_t, gemma_var_lib_t, gemma_var_lib_t)
+files_var_lib_filetrans(gemma_t, gemma_var_lib_t, { dir file })
+
+manage_dirs_pattern(gemma_t, gemma_var_run_t, gemma_var_run_t)
+manage_files_pattern(gemma_t, gemma_var_run_t, gemma_var_run_t)
+
+sysnet_dns_name_resolve(gemma_t)
+corenet_all_recvfrom_unlabeled(gemma_t)
+
+allow gemma_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(gemma_t)
+corenet_tcp_sendrecv_generic_node(gemma_t)
+corenet_tcp_sendrecv_all_ports(gemma_t)
+corenet_tcp_bind_generic_node(gemma_t)
+
+gen_require(`
+    type gemma_port_t;
+')
+allow gemma_t gemma_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type gemma_port_t;
+')
+allow gemma_t gemma_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(gemma_t)
+
+files_read_etc_files(gemma_t)
+
+miscfiles_read_localization(gemma_t)
+
+sysnet_dns_name_resolve(gemma_t)
+
+allow gemma_t gemma_exec_t:file execute_no_trans;
+allow gemma_t self:process setsched;
+corecmd_exec_ls(gemma_t)
+corenet_tcp_connect_http_port(gemma_t)
+dev_read_urand(gemma_t)
+fs_getattr_xattr_fs(gemma_t)
+kernel_read_system_state(gemma_t)

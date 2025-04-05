@@ -1,0 +1,22 @@
+[Unit]
+Description=Gemma's distributed currency daemon
+After=network.target
+
+[Service]
+User=gemma
+Group=gemma
+
+Type=forking
+PIDFile=/var/lib/gemmad/gemmad.pid
+ExecStart=/usr/bin/gemmad -daemon -pid=/var/lib/gemmad/gemmad.pid \
+-conf=/etc/gemma/gemma.conf -datadir=/var/lib/gemmad -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target
