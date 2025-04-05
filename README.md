@@ -1,104 +1,146 @@
-Gemma Core integration/staging tree
-=====================================
+<h1 align="center">
+<img src="https://i.imgur.com/pXSq2Ym.png" alt="Gemma" width="300"/>
+<br/><br/>
+Gemma [GEMS, G]
+</h1>
+Gemma is a layer 1, decentralized cryptocurrency that launched on April 5th, 2025. It was designed for micropayments and tipping, along with a platform to create your own assets right on the blockchain. Transactions are fully secured with proof-of-work GPU mining using KAWPOW, protecting decentralization with ASIC resistance forever.
+<br/><br/>
+The Gemma Core software acts as a wallet and allows anyone to operate a node for the Gemma blockchain and use the KAWPOW hashing method for Proof of Work.
+<br/><br/>
 
-https://gemmacoin.org
+**Website:** [http://gemmacoin.io/](http://gemmacoin.io/)
 
-To see how to run Gemma, please read the respective files in [the doc folder](doc)
+## General Info
 
+Gemma was designed with a high supply to allow micropayments that are fractions of a penny!
 
-What is Gemma?
-----------------
-
-Gemma is an experimental digital currency that enables instant payments to
-anyone, anywhere in the world. The Gemma platform also lets anyone create assets (tokens) on the Gemma network. 
-Assets can be used for NFTs, STOs, Gift Cards, and fractional ownership of anything of value.
-Gemma uses peer-to-peer technology to operate
-with no central authority: managing transactions and issuing money are carried
-out collectively by the network. 
-
-
-
-License
--------
-
-Gemma Core is released under the terms of the MIT license. See [COPYING](COPYING) for more
-information or see https://opensource.org/licenses/MIT.
-
-Development Process
--------------------
-
-The `master` branch is regularly built and tested, but is not guaranteed to be
-completely stable. [Tags](https://github.com/GemmaProject/Gemma/tags) are created
-regularly to indicate new official, stable release versions of Gemma Core.
-
-Active development is done in the `develop` branch. 
-
-The contribution workflow is described in [CONTRIBUTING.md](CONTRIBUTING.md).
-
-Developer IRC is inactive please join us on discord in #development. https://discord.gg/fndp4NBGct
-
-Testing
--------
-
-Testing and code review is the bottleneck for development; we get more pull
-requests than we can review and test on short notice. Please be patient and help out by testing
-other people's pull requests, and remember this is a security-critical project where any mistake might cost people
-lots of money.
-
-Testnet is up and running and available to use during development.
-
-### Automated Testing
-
-Developers are strongly encouraged to write [unit tests](src/test/README.md) for new code, and to
-submit new unit tests for old code. Unit tests can be compiled and run
-(assuming they weren't disabled in configure) with: `make check`. Further details on running
-and extending unit tests can be found in [/src/test/README.md](/src/test/README.md).
-
-There are also [regression and integration tests](/test), written
-in Python, that are run automatically on the build server.
-These tests can be run (if the [test dependencies](/test) are installed) with: `test/functional/test_runner.py`
+* Addresses start with `G`
+* Coin Name    : Gemma
+* Coin ticker  : GEMS
+* Algorithm    : KAWPOW
+* Block Time   : 60 seconds
+* Default Port : 4682
+* Explorer     : https://explorer.gemmacoin.io
+* Wallet       : https://github.com/TechnoVisionDev/Gemma-Core
 
 
-### Manual Quality Assurance (QA) Testing
+## Usage 💻
 
-Changes should be tested by somebody other than the developer who wrote the
-code. This is especially important for large or high-risk changes. It is useful
-to add a test plan to the pull request description if testing the changes is
-not straightforward.
+To start your journey with Gemma Core, see the [installation guide](INSTALL.md) and the [getting started](doc/getting-started.md) tutorial.
+
+The JSON-RPC API provided by Gemma Core is self-documenting and can be browsed with `gemma-cli help`, while detailed information for each command can be viewed with `gemma-cli help <command>`. Alternatively, see the [Bitcoin Core documentation](https://developer.bitcoin.org/reference/rpc/) - which implement a similar protocol - to get a browsable version.
+
+<font face="Verdana"><b>Block Rewards Distribution</b></font>
+&nbsp;</p>
+<table border="1" width="46%">
+	<tr>
+		<td width="230"><b>Starting Block</b></td>
+		<td width="270"><b>End Block</b></td>
+		<td><b>Rewards</b></td>
+	</tr>
+	<tr>
+		<td width="230">1</td>
+		<td width="270">2,100,000</td>
+		<td>190,000</td>
+	</tr>
+	<tr>
+		<td width="230">2,100,000</td>
+		<td width="270">4,200,000</td>
+		<td>95,000</td>
+	</tr>
+	<tr>
+		<td width="230">4,200,000</td>
+		<td width="270">6,300,000</td>
+		<td>47,500</td>
+	</tr>
+	<tr>
+		<td width="230">6,300,000</td>
+		<td width="270">8,400,000</td>
+		<td>23,750</td>
+	</tr>
+	<tr>
+		<td width="230">8,400,000</td>
+		<td width="270">10,500,000</td>
+		<td>11,875</td>
+	</tr>
+</table>
+
+<font face="Verdana"><b>Running a Full Node</b></font>
+
+Running a full node helps contribute to the Gemma network's security and decentralization by relaying data to other nodes and verifying transactions. If you would like to run a full node, simply download the Gemma Core wallet, let the blockchain fully sync, and ensure your network has port 4682 forwarded to allow incoming connections. 
+&nbsp;</p>
+<table border="1" width="46%">
+	<tr>
+		<td width="230"><b>Default Port</b></td>
+		<td width="270">4682</td>
+	</tr>
+</table>
+
+## Ongoing development 💻
+
+Gemma Core is an open source and community driven software. The development
+process is open and publicly visible; anyone can see, discuss and work on the
+software.
+
+Main development resources:
+
+* [GitHub Projects](https://github.com/TechnoVisionDev/Gemma-Core/projects) is used to
+  follow planned and in-progress work for upcoming releases.
+* [GitHub Discussion](https://github.com/TechnoVisionDev/Gemma-Core/discussions) is used
+  to discuss features, planned and unplanned, related to both the development of
+  the Flopcon Core software, the underlying protocols and the FLOP asset.
 
 
-About Gemma
-----------------
-A digital peer to peer network for the facilitation of asset transfer.
+### Version strategy
+Version numbers are following ```major.minor.patch``` semantics.
+
+### Branches
+There are 3 types of branches in this repository:
+
+- **master:** Stable, contains the latest version of the latest *major.minor* release.
+- **maintenance:** Stable, contains the latest version of previous releases, which are still under active maintenance. Format: ```<version>-maint```
+- **development:** Unstable, contains new code for planned releases. Format: ```<version>-dev```
+
+*Master and maintenance branches are exclusively mutable by release. Planned*
+*releases will always have a development branch and pull requests should be*
+*submitted against those. Maintenance branches are there for **bug fixes only,***
+*please submit new features against the development branch with the highest version.*
+
+## Contributing 🤝
+
+If you find a bug or experience issues with this software, please report it
+using the [issue system](https://github.com/TechnoVisionDev/Gemma-Core/issues).
+
+Please see [the contribution guide](CONTRIBUTING.md) to see how you can
+participate in the development of Flopcoin Core. There are often
+[topics seeking help](https://github.com/TechnoVisionDev/Gemma-Core/labels/help%20wanted)
+where your contributions will have high impact and get very appreciation.
+
+## Communities 🐸
+
+You can join the communities on different social media.
+To see what's going on, meet people & discuss, learn
+about Gemma, give or ask for help, to share your project.
+
+Here are some places to visit:
 
 
+* [Discord](https://discord.gg/hpbMxBTDAb)
+* [Website](http://gemmacoin.io/)
+* [X](https://x.com/gemma_coin)
 
-In the fictional world of Westeros, gemmas are used as messengers who carry statements of truth. Gemma is a use case specific blockchain designed to carry statements of truth about who owns what assets. 
+## Future Plan
 
+- Securing the network with more mining pools
+- Getting Flopcoin listed on popular exchanges
+- Implementing a content creator tipping platform using Flopcoin as payment.
+- Anything the community is interested in!
 
+## Frequently Asked Questions ❓
 
-Thank you to the Bitcoin developers. 
+Do you have a question regarding Flopcoin? An answer is perhaps already in the [FAQ](doc/FAQ.md) or the [Q&A section](https://github.com/TechnoVisionDev/Gemma-Core/discussions/categories/q-a) of the discussion board!
 
-The Gemma project is launched based on the hard work and continuous effort of over 400 Bitcoin developers who made over 14,000 commits over the life to date of the Bitcoin project. We are eternally grateful to you for your efforts and diligence in making a secure network and for their support of free and open source software development.  The Gemma experiment is made on the foundation you built.
-
-
-Abstract
-----------------
-Gemma aims to implement a blockchain which is optimized specifically for the use case of transferring assets such as securities from one holder to another. Based on the extensive development and testing of Bitcoin, Gemma is built on a fork of the Bitcoin code. Key changes include a faster block reward time and a change in the number, but not weighed distribution schedule, of coins. Gemma is free and open source and will be issued and mined transparently with no pre-mine, developer allocation or any other similar set aside. Gemma is intended to prioritize user control, privacy and censorship resistance and be jurisdiction agnostic while allowing simple optional additional features for users based on need.
-
-
-
-A blockchain is a ledger showing the value of something and allowing it to be transferred to someone else. Of all the possible uses for blockchains, the reporting of who owns what is one of the core uses of the technology.  This is why the first and most successful use case for blockchain technology to date has been Bitcoin.
-
-The success of the Ethereum ERC 20 token shows the demand for tokenized assets that use another blockchain.  Tokens offer many advantages to traditional shares or other participation mechanisms such as faster transfer, possibly increased user control and censorship resistance and reduction or elimination of the need for trusted third parties.
-
-Bitcoin also has the capability of serving as the rails for tokens by using projects such as Omnilayer, RSK or Counterparty. However, neither Bitcoin nor Ethereum was specifically designed for facilitating ownership of other assets. 
-
-Gemma is designed to be a use case specific blockchain designed to efficiently handle one specific function: the transfer of assets from one party to another.
-
-Bitcoin is and always should be focused on its goals of being a better form of money. Bitcoin developers will unlikely prioritize improvements or features which are specifically beneficial to the facilitation of token transfers.  One goal of the Gemma project is to see if a use case specific blockchain and development effort can create code which can either improve existing structures like Bitcoin or provide advantages for specific use cases.
-
-In the new global economy, borders and jurisdictions will be less relevant as more assets are tradable and trade across borders is increasingly frictionless. In an age where people can move significant amounts of wealth instantly using Bitcoin, global consumers will likely demand the same efficiency for their securities and similar asset holdings.
-
-For such a global system to work it will need to be independent of regulatory jurisdictions.  This is not due to ideological belief but practicality: if the rails for blockchain asset transfer are not censorship resistance and jurisdiction agnostic, any given jurisdiction may be in conflict with another.  In legacy systems, wealth was generally confined in the jurisdiction of the holder and therefore easy to control based on the policies of that jurisdiction. Because of the global nature of blockchain technology any protocol level ability to control wealth would potentially place jurisdictions in conflict and will not be able to operate fairly.  
-
+## License ⚖️
+Flopcoin Core is released under the terms of the MIT license. See
+[COPYING](COPYING) for more information or see
+[opensource.org](https://opensource.org/licenses/MIT)
