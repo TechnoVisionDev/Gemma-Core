@@ -88,7 +88,7 @@ Main development resources:
   follow planned and in-progress work for upcoming releases.
 * [GitHub Discussion](https://github.com/TechnoVisionDev/Gemma-Core/discussions) is used
   to discuss features, planned and unplanned, related to both the development of
-  the Flopcon Core software, the underlying protocols and the FLOP asset.
+  the Gemma Core software, the underlying protocols and the GEMS asset.
 
 
 ### Version strategy
@@ -112,7 +112,7 @@ If you find a bug or experience issues with this software, please report it
 using the [issue system](https://github.com/TechnoVisionDev/Gemma-Core/issues).
 
 Please see [the contribution guide](CONTRIBUTING.md) to see how you can
-participate in the development of Flopcoin Core. There are often
+participate in the development of Gemma Core. There are often
 [topics seeking help](https://github.com/TechnoVisionDev/Gemma-Core/labels/help%20wanted)
 where your contributions will have high impact and get very appreciation.
 
@@ -129,18 +129,11 @@ Here are some places to visit:
 * [Website](http://gemmacoin.io/)
 * [X](https://x.com/gemma_coin)
 
-## Future Plan
-
-- Securing the network with more mining pools
-- Getting Flopcoin listed on popular exchanges
-- Implementing a content creator tipping platform using Flopcoin as payment.
-- Anything the community is interested in!
-
 ## Frequently Asked Questions ❓
 
-Do you have a question regarding Flopcoin? An answer is perhaps already in the [FAQ](doc/FAQ.md) or the [Q&A section](https://github.com/TechnoVisionDev/Gemma-Core/discussions/categories/q-a) of the discussion board!
+Do you have a question regarding Gemma? An answer is perhaps already in the [FAQ](doc/FAQ.md) or the [Q&A section](https://github.com/TechnoVisionDev/Gemma-Core/discussions/categories/q-a) of the discussion board!
 
 ## License ⚖️
-Flopcoin Core is released under the terms of the MIT license. See
+Gemma Core is released under the terms of the MIT license. See
 [COPYING](COPYING) for more information or see
 [opensource.org](https://opensource.org/licenses/MIT)
