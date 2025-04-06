@@ -323,7 +323,7 @@ public:
         nMessagingActivationBlock = 0; // Messaging activated block height
         nRestrictedActivationBlock = 0; // Restricted activated block height
 
-	nKAAAWWWPOWActivationTime = 1743867500
+	nKAAAWWWPOWActivationTime = 1743867500;
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
         /** GEMS End **/
     }
