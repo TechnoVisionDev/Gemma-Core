@@ -26,7 +26,7 @@ std::string ValueFromAmountString(const CAmount& amount, const int8_t units)
     int64_t n_abs = (sign ? -amount : amount);
     int64_t quotient = n_abs / COIN;
     int64_t remainder = n_abs % COIN;
-    remainder = remainder / pow(10, 8 - units);
+    remainder = remainder / pow(10, 6 - units);
 
     if (units == 0 && remainder == 0) {
         return strprintf("%s%d", sign ? "-" : "", quotient);
