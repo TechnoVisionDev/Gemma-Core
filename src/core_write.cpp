@@ -43,7 +43,7 @@ UniValue ValueFromAmount(const CAmount& amount, const int8_t units)
 
 UniValue ValueFromAmount(const CAmount& amount)
 {
-    return ValueFromAmount(amount, 8);
+    return ValueFromAmount(amount, 6);
 }
 
 std::string FormatScript(const CScript& script)
