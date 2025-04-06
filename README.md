@@ -71,7 +71,7 @@ Running a full node helps contribute to the Gemma network's security and decentr
 &nbsp;</p>
 <table border="1" width="46%">
 	<tr>
-		<td width="230"><b>Default Port</b></td>
+		<td width="230"><b>Mainnet Peer Port</b></td>
 		<td width="270">4682</td>
 	</tr>
 </table>
