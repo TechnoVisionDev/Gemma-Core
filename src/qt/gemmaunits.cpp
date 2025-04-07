@@ -102,7 +102,7 @@ QString GemmaUnits::format(int unit, const CAmount& nIn, bool fPlus, SeparatorSt
 {
     // Note: not using straight sprintf here because we do NOT want
     // localized number formatting.
-    if((nAssetUnit < 0 || nAssetUnit > 8) && !valid(unit))
+    if((nAssetUnit < 0 || nAssetUnit > 6) && !valid(unit))
         return QString(); // Refuse to format invalid unit
     qint64 n = (qint64)nIn;
     qint64 coin = nAssetUnit >= 0 ? factorAsset(nAssetUnit) : factor(unit);
@@ -202,7 +202,7 @@ bool GemmaUnits::parse(int unit, const QString &value, CAmount *val_out)
 
 bool GemmaUnits::assetParse(int assetUnit, const QString &value, CAmount *val_out)
 {
-    if(!(assetUnit >= 0 && assetUnit <= 8) || value.isEmpty())
+    if(!(assetUnit >= 0 && assetUnit <= 6) || value.isEmpty())
         return false; // Refuse to parse invalid unit or empty string
     int num_decimals = assetUnit;
 
