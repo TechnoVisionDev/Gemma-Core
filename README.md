@@ -1,7 +1,7 @@
 <h1 align="center">
 <img src="https://i.imgur.com/pXSq2Ym.png" alt="Gemma" width="300"/>
 <br/><br/>
-Gemma [GEMS, G]
+Gemma [GEMMA, G]
 </h1>
 Gemma is a layer 1, decentralized cryptocurrency that launched on April 5th, 2025. It was designed for micropayments and tipping, along with a platform to create your own assets right on the blockchain. Transactions are fully secured with proof-of-work GPU mining using KAWPOW, protecting decentralization with ASIC resistance forever.
 <br/><br/>
@@ -16,7 +16,7 @@ Gemma was designed with a high supply to allow micropayments that are fractions 
 
 * Addresses start with `G`
 * Coin Name    : Gemma
-* Coin ticker  : GEMS
+* Coin ticker  : GEMMA
 * Algorithm    : KAWPOW
 * Block Time   : 60 seconds
 * Default Port : 4682
@@ -88,7 +88,7 @@ Main development resources:
   follow planned and in-progress work for upcoming releases.
 * [GitHub Discussion](https://github.com/TechnoVisionDev/Gemma-Core/discussions) is used
   to discuss features, planned and unplanned, related to both the development of
-  the Gemma Core software, the underlying protocols and the GEMS asset.
+  the Gemma Core software, the underlying protocols and the GEMMA asset.
 
 
 ### Version strategy

@@ -144,7 +144,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
                 return ISMINE_SPENDABLE;
             break;
         }
-            /** GEMS START */
+            /** GEMMA START */
         case TX_NEW_ASSET: {
             if (!AreAssetsDeployed())
                 return ISMINE_NO;
@@ -193,7 +193,7 @@ isminetype IsMine(const CKeyStore &keystore, const CScript& scriptPubKey, bool& 
                 return ISMINE_SPENDABLE;
             break;
         }
-            /** GEMS END*/
+            /** GEMMA END*/
     }
 
     if (keystore.HaveWatchOnly(scriptPubKey)) {

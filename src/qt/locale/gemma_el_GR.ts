@@ -337,8 +337,8 @@
         <translation>Διεύθυνση:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>H διεύθυνση GEMS που θα κρατά αυτό το περιουσιακό στοιχείο (Πρέπει να σου ανήκει αυτή η διεύθυνση). Άφηστε το κενό για δημιουργία νέας διεύθυνσης.</translation>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>H διεύθυνση GEMMA που θα κρατά αυτό το περιουσιακό στοιχείο (Πρέπει να σου ανήκει αυτή η διεύθυνση). Άφηστε το κενό για δημιουργία νέας διεύθυνσης.</translation>
     </message>
     <message>
         <source>Balance:</source>

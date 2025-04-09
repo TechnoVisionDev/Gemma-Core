@@ -143,9 +143,9 @@ const char* GetOpName(opcodetype opcode)
     case OP_NOP9                   : return "OP_NOP9";
     case OP_NOP10                  : return "OP_NOP10";
 
-    /** GEMS START */
+    /** GEMMA START */
     case OP_GEMS_ASSET              : return "OP_GEMS_ASSET";
-    /** GEMS END */
+    /** GEMMA END */
 
     case OP_INVALIDOPCODE          : return "OP_INVALIDOPCODE";
 
@@ -227,7 +227,7 @@ bool CScript::IsPayToScriptHash() const
             (*this)[22] == OP_EQUAL);
 }
 
-/** GEMS START */
+/** GEMMA START */
 bool CScript::IsAssetScript() const
 {
     int nType = 0;
@@ -247,12 +247,12 @@ bool CScript::IsAssetScript(int& nType, bool& fIsOwner, int& nStartingIndex) con
     if (this->size() > 31) {
         if ((*this)[25] == OP_GEMS_ASSET) { // OP_GEMS_ASSET is always in the 25 index of the script if it exists
             int index = -1;
-            if ((*this)[27] == GEMS_R) { // Check to see if GEMS starts at 27 ( this->size() < 105)
+            if ((*this)[27] == GEMS_R) { // Check to see if GEMMA starts at 27 ( this->size() < 105)
                 if ((*this)[28] == GEMS_V)
                     if ((*this)[29] == GEMS_N)
                         index = 30;
             } else {
-                if ((*this)[28] == GEMS_R) // Check to see if GEMS starts at 28 ( this->size() >= 105)
+                if ((*this)[28] == GEMS_R) // Check to see if GEMMA starts at 28 ( this->size() >= 105)
                     if ((*this)[29] == GEMS_V)
                         if ((*this)[30] == GEMS_N)
                             index = 31;
@@ -353,7 +353,7 @@ bool CScript::IsNullAssetVerifierTxDataScript() const
             (*this)[1] == OP_RESERVED &&
             (*this)[2] != OP_RESERVED);
 }
-/** GEMS END */
+/** GEMMA END */
 
 bool CScript::IsPayToWitnessScriptHash() const
 {

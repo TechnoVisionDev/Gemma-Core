@@ -74,7 +74,7 @@ public:
         StatusRole,
         /** Unprocessed icon */
         RawDecorationRole,
-        /** GEMS or name of an asset */
+        /** GEMMA or name of an asset */
         AssetNameRole,
     };
 

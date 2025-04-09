@@ -961,8 +961,8 @@
         <translation>Address:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</translation>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</translation>
     </message>
     <message>
         <source>Verifier String:</source>
@@ -1097,8 +1097,8 @@
         <translation>Balance:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>
@@ -1825,8 +1825,8 @@ They are not recoverable !!</translation>
         <translation>User-defined intent/purpose of the transaction.</translation>
     </message>
     <message>
-        <source>The asset (or GEMS) removed or added to balance.</source>
-        <translation>The asset (or GEMS) removed or added to balance.</translation>
+        <source>The asset (or GEMMA) removed or added to balance.</source>
+        <translation>The asset (or GEMMA) removed or added to balance.</translation>
     </message>
 </context>
 <context>
@@ -1911,8 +1911,8 @@ They are not recoverable !!</translation>
         <translation>&amp;Currency Unit:</translation>
     </message>
     <message>
-        <source>Choose which currency to display the realtime value of GEMS in (ie: BTC/GEMS).</source>
-        <translation>Choose which currency to display the realtime value of GEMS in (ie: BTC/GEMS).</translation>
+        <source>Choose which currency to display the realtime value of GEMMA in (ie: BTC/GEMMA).</source>
+        <translation>Choose which currency to display the realtime value of GEMMA in (ie: BTC/GEMMA).</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
@@ -2186,8 +2186,8 @@ They are not recoverable !!</translation>
         <translation>Güncel toplam bakiyeniz</translation>
     </message>
     <message>
-        <source>GEMS Balances</source>
-        <translation>GEMS Balances</translation>
+        <source>GEMMA Balances</source>
+        <translation>GEMMA Balances</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
@@ -2883,8 +2883,8 @@ They are not recoverable !!</translation>
         <translation>&amp;Transfer Assets</translation>
     </message>
     <message>
-        <source>Transfer assets to GEMS addresses</source>
-        <translation>Transfer assets to GEMS addresses</translation>
+        <source>Transfer assets to GEMMA addresses</source>
+        <translation>Transfer assets to GEMMA addresses</translation>
     </message>
     <message>
         <source>&amp;Manage Assets</source>
@@ -3465,8 +3465,8 @@ They are not recoverable !!</translation>
         <translation>Address:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</translation>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</translation>
     </message>
     <message>
         <source>Verifier String:</source>
@@ -3597,8 +3597,8 @@ They are not recoverable !!</translation>
         <translation>Balance:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>
@@ -4691,8 +4691,8 @@ They are not recoverable !!</translation>
         <translation>Oluşturulan gemma'lerin harcanabilmelerinden önce %1 blok beklemeleri gerekmektedir. Bu blok, oluşturduğunuzda, blok zincirine eklenmesi için ağda yayınlandı. Zincire eklenmesi başarısız olursa, durumu "kabul edilmedi" olarak değiştirilecek ve harcanamayacaktır. Bu, bazen başka bir düğüm sizden birkaç saniye önce ya da sonra blok oluşturursa meydana gelebilir.</translation>
     </message>
     <message>
-        <source>Net GEMS amount</source>
-        <translation>Net GEMS amount</translation>
+        <source>Net GEMMA amount</source>
+        <translation>Net GEMMA amount</translation>
     </message>
     <message>
         <source>Debug information</source>
@@ -4869,8 +4869,8 @@ They are not recoverable !!</translation>
         <translation>Bakiyeden kaldırılan ya da bakiyeye eklenen tutar.</translation>
     </message>
     <message>
-        <source>The asset (or GEMS) removed or added to balance.</source>
-        <translation>The asset (or GEMS) removed or added to balance.</translation>
+        <source>The asset (or GEMMA) removed or added to balance.</source>
+        <translation>The asset (or GEMMA) removed or added to balance.</translation>
     </message>
 </context>
 <context>

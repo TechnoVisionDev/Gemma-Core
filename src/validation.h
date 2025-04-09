@@ -503,7 +503,7 @@ extern CCoinsViewCache *pcoinsTip;
 /** Global variable that points to the active block tree (protected by cs_main) */
 extern CBlockTreeDB *pblocktree;
 
-/** GEMS START */
+/** GEMMA START */
 
 /** Global variable that point to the active assets database (protected by cs_main) */
 extern CAssetsDB *passetsdb;
@@ -555,7 +555,7 @@ extern CAssetSnapshotDB *pAssetSnapshotDb;
 
 extern CDistributeSnapshotRequestDB *pDistributeSnapshotDb;
 
-/** GEMS END */
+/** GEMMA END */
 
 /**
  * Return the spend height, which is one more than the inputs.GetBestBlock().
@@ -588,7 +588,7 @@ bool DumpMempool();
 /** Load the mempool from disk. */
 bool LoadMempool();
 
-/** GEMS START */
+/** GEMMA START */
 bool AreAssetsDeployed();
 
 bool AreMessagesDeployed();
@@ -613,6 +613,6 @@ bool IsMessagingActive(unsigned int nBlockNumber);
 bool IsRestrictedActive(unsigned int nBlockNumber);
 
 CAssetsCache* GetCurrentAssetCache();
-/** GEMS END */
+/** GEMMA END */
 
 #endif // RAVEN_VALIDATION_H

@@ -944,8 +944,8 @@
         <translation>Adres:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>Adres GEMS, na którym będzie przechowywane to aktywo.
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>Adres GEMMA, na którym będzie przechowywane to aktywo.
 (Musisz być jego właścicielem). Zostaw puste miejsce jeśli chcesz utworzyć nowy adres. </translation>
     </message>
     <message>
@@ -1069,8 +1069,8 @@
         <translation>Saldo:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>
@@ -1668,8 +1668,8 @@ Zalecane działanie: Zsynchronizuj całkowicie portfel zanim wyślesz transakcj�
         <translation>Zdefiniowany przez użytkownika cel transakcji.</translation>
     </message>
     <message>
-        <source>The asset (or GEMS) removed or added to balance.</source>
-        <translation>Aktywo (lub GEMS) usunięte lub dodane do salda.</translation>
+        <source>The asset (or GEMMA) removed or added to balance.</source>
+        <translation>Aktywo (lub GEMMA) usunięte lub dodane do salda.</translation>
     </message>
 </context>
 <context>
@@ -1969,8 +1969,8 @@ Zalecane działanie: Zsynchronizuj całkowicie portfel zanim wyślesz transakcj�
         <translation>Twoje obecne saldo</translation>
     </message>
     <message>
-        <source>GEMS Balances</source>
-        <translation>Salda GEMS</translation>
+        <source>GEMMA Balances</source>
+        <translation>Salda GEMMA</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
@@ -3056,8 +3056,8 @@ Zalecane działanie: Zsynchronizuj całkowicie portfel zanim wyślesz transakcj�
         <translation>Saldo:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>

@@ -1218,7 +1218,7 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -1389,7 +1389,7 @@
     </message>
     <message>
         <location line="+10"/>
-        <source>123.456 GEMS</source>
+        <source>123.456 GEMMA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2302,7 +2302,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>The asset (or GEMS) removed or added to balance.</source>
+        <source>The asset (or GEMMA) removed or added to balance.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2411,7 +2411,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="+13"/>
-        <source>Choose which currency to display the realtime value of GEMS in (ie: BTC/GEMS).</source>
+        <source>Choose which currency to display the realtime value of GEMMA in (ie: BTC/GEMMA).</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -2773,7 +2773,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="-249"/>
-        <source>GEMS Balances</source>
+        <source>GEMMA Balances</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -3723,7 +3723,7 @@ They are not recoverable !!</source>
     <message>
         <location line="+1"/>
         <location line="+1143"/>
-        <source>Transfer assets to GEMS addresses</source>
+        <source>Transfer assets to GEMMA addresses</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4465,7 +4465,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="+10"/>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -4631,7 +4631,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="+7"/>
-        <source>123.456 GEMS</source>
+        <source>123.456 GEMMA</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6097,7 +6097,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="-37"/>
-        <source>Net GEMS amount</source>
+        <source>Net GEMMA amount</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -6323,7 +6323,7 @@ They are not recoverable !!</source>
     </message>
     <message>
         <location line="+2"/>
-        <source>The asset (or GEMS) removed or added to balance.</source>
+        <source>The asset (or GEMMA) removed or added to balance.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -338,7 +338,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 GEMS</string>
+                    <string notr="true">0.00 GEMMA</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -418,7 +418,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 GEMS</string>
+                    <string notr="true">0.00 GEMMA</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -469,7 +469,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 GEMS</string>
+                    <string notr="true">0.00 GEMMA</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -498,7 +498,7 @@
                     <enum>Qt::ActionsContextMenu</enum>
                    </property>
                    <property name="text">
-                    <string notr="true">0.00 GEMS</string>
+                    <string notr="true">0.00 GEMMA</string>
                    </property>
                    <property name="textInteractionFlags">
                     <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
@@ -750,7 +750,7 @@
                <string/>
               </property>
               <property name="placeholderText">
-               <string>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</string>
+               <string>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</string>
               </property>
              </widget>
             </item>
@@ -1714,7 +1714,7 @@
          <item>
           <widget class="QLabel" name="labelBalance">
            <property name="text">
-            <string>123.456 GEMS</string>
+            <string>123.456 GEMMA</string>
            </property>
           </widget>
          </item>

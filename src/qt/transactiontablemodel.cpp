@@ -600,7 +600,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         case Amount:
             return formatTxAmount(rec, true, GemmaUnits::separatorAlways);
         case AssetName:
-            if (rec->assetName != "GEMS")
+            if (rec->assetName != "GEMMA")
                return QString::fromStdString(rec->assetName);
             else
                return QString(GemmaUnits::name(walletModel->getOptionsModel()->getDisplayUnit()));
@@ -650,7 +650,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
         }
         if(index.column() == AssetName)
         {
-            if (rec->assetName != "GEMS")
+            if (rec->assetName != "GEMMA")
                return platformStyle->AssetTxColor();
         }
         break;
@@ -712,7 +712,7 @@ QVariant TransactionTableModel::data(const QModelIndex &index, int role) const
     case AssetNameRole:
         {
             QString assetName;
-            if (rec->assetName != "GEMS")
+            if (rec->assetName != "GEMMA")
                assetName.append(QString::fromStdString(rec->assetName));
             else
                assetName.append(QString(GemmaUnits::name(walletModel->getOptionsModel()->getDisplayUnit())));
@@ -752,7 +752,7 @@ QVariant TransactionTableModel::headerData(int section, Qt::Orientation orientat
             case Amount:
                 return tr("Amount removed from or added to balance.");
             case AssetName:
-                return tr("The asset (or GEMS) removed or added to balance.");
+                return tr("The asset (or GEMMA) removed or added to balance.");
             }
         }
     }

@@ -31,7 +31,7 @@ class AmountSpinBox: public QAbstractSpinBox
 public:
     explicit AmountSpinBox(QWidget *parent):
         QAbstractSpinBox(parent),
-        currentUnit(GemmaUnits::GEMS),
+        currentUnit(GemmaUnits::GEMMA),
         singleStep(100000), // satoshis
         assetUnit(-1)
     {
@@ -124,9 +124,9 @@ public:
             const QFontMetrics fm(fontMetrics());
             int h = lineEdit()->minimumSizeHint().height();
 			#ifndef QTversionPreFiveEleven
-            	int w = fm.horizontalAdvance(GemmaUnits::format(GemmaUnits::GEMS, GemmaUnits::maxMoney(), false, GemmaUnits::separatorAlways, assetUnit));
+            	int w = fm.horizontalAdvance(GemmaUnits::format(GemmaUnits::GEMMA, GemmaUnits::maxMoney(), false, GemmaUnits::separatorAlways, assetUnit));
 			#else
-				int w = fm.width(GemmaUnits::format(GemmaUnits::GEMS, GemmaUnits::maxMoney(), false, GemmaUnits::separatorAlways, assetUnit));
+				int w = fm.width(GemmaUnits::format(GemmaUnits::GEMMA, GemmaUnits::maxMoney(), false, GemmaUnits::separatorAlways, assetUnit));
 			#endif
             w += 2; // cursor blinking space
 

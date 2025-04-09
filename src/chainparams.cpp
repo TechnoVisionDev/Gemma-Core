@@ -286,7 +286,7 @@ public:
             0.06268656 // * estimated number of transactions per second after that timestamp
         };
 
-        /** GEMS Start **/
+        /** GEMMA Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 20000 * COIN;
         nReissueAssetBurnAmount = 4000 * COIN;
@@ -325,7 +325,7 @@ public:
 
 	nKAAAWWWPOWActivationTime = 1743867500;
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** GEMS End **/
+        /** GEMMA End **/
     }
 };
 
@@ -502,7 +502,7 @@ public:
             0.0        // * estimated number of transactions per second after that timestamp
         };
 
-        /** GEMS Start **/
+        /** GEMMA Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 20000 * COIN;
         nReissueAssetBurnAmount = 4000 * COIN;
@@ -541,7 +541,7 @@ public:
 
         nKAAAWWWPOWActivationTime = nGenesisTime + (60 * 60); // 1 hour after genesis
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** GEMS End **/
+        /** GEMMA End **/
     }
 };
 
@@ -702,7 +702,7 @@ public:
         // Gemma BIP44 cointype in regtest
         nExtCoinType = 1;
 
-        /** GEMS Start **/
+        /** GEMMA Start **/
         // Burn Amounts
         nIssueAssetBurnAmount = 20000 * COIN;
         nReissueAssetBurnAmount = 4000 * COIN;
@@ -744,7 +744,7 @@ public:
         // If you are looking to test the kawpow hashing function in regtest. You will need to change this number
         nKAAAWWWPOWActivationTime = 1743283727 + (60 * 60); // 1 hour after genesis
         nKAWPOWActivationTime = nKAAAWWWPOWActivationTime;
-        /** GEMS End **/
+        /** GEMMA End **/
     }
 };
 

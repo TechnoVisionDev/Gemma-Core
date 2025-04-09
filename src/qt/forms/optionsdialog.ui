@@ -637,7 +637,7 @@
          <item>
           <widget class="QValueComboBox" name="currencyUnitIndex">
            <property name="toolTip">
-            <string>Choose which currency to display the realtime value of GEMS in (ie: BTC/GEMS).</string>
+            <string>Choose which currency to display the realtime value of GEMMA in (ie: BTC/GEMMA).</string>
            </property>
           </widget>
          </item>

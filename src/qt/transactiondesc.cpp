@@ -50,7 +50,7 @@ QString TransactionDesc::toHTML(CWallet *wallet, CWalletTx &wtx, TransactionReco
 {
     QString strHTML;
 
-    if (rec->assetName != "GEMS") {
+    if (rec->assetName != "GEMMA") {
         return toAssetHTML(wallet, wtx, rec, unit);
     }
 
@@ -365,7 +365,7 @@ QString TransactionDesc::toAssetHTML(CWallet *wallet, CWalletTx &wtx, Transactio
         strHTML += "<b>" + tr("Debit") + ":</b> " + GemmaUnits::formatWithCustomName(QString::fromStdString(rec->assetName), nAssetsRec, rec->units, true) + "<br>";
     }
 
-    strHTML += "<b>" + tr("Net GEMS amount") + ":</b> " + GemmaUnits::formatHtmlWithUnit(unit, nNet, true) + "<br>";
+    strHTML += "<b>" + tr("Net GEMMA amount") + ":</b> " + GemmaUnits::formatHtmlWithUnit(unit, nNet, true) + "<br>";
 
     //
     // Message

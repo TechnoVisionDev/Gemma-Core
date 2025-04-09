@@ -1803,8 +1803,8 @@
         <translation>&amp;Transferir Activos</translation>
     </message>
     <message>
-        <source>Transfer assets to GEMS addresses</source>
-        <translation>Transferir Activos a la dirección GEMS</translation>
+        <source>Transfer assets to GEMMA addresses</source>
+        <translation>Transferir Activos a la dirección GEMMA</translation>
     </message>
     <message>
         <source>&amp;Manage Assets</source>

@@ -42,10 +42,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
     std::map<std::string, std::string> mapValue = wtx.mapValue;
 
     
-    /** GEMS START */
+    /** GEMMA START */
     if(isSwapTransaction(wallet, wtx, parts, nCredit, nDebit, nNet))
         return parts;
-    /** GEMS END */
+    /** GEMMA END */
     if (nNet > 0 || wtx.IsCoinBase())
     {
         //
@@ -56,10 +56,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             const CTxOut& txout = wtx.tx->vout[i];
             isminetype mine = wallet->IsMine(txout);
 
-            /** GEMS START */
+            /** GEMMA START */
             if (txout.scriptPubKey.IsAssetScript() || txout.scriptPubKey.IsNullAssetTxDataScript() || txout.scriptPubKey.IsNullGlobalRestrictionAssetTxDataScript())
                 continue;
-            /** GEMS END */
+            /** GEMMA END */
 
             if(mine)
             {
@@ -104,10 +104,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
         isminetype fAllToMe = ISMINE_SPENDABLE;
         for (const CTxOut& txout : wtx.tx->vout)
         {
-            /** GEMS START */
+            /** GEMMA START */
             if (txout.scriptPubKey.IsAssetScript() || txout.scriptPubKey.IsNullAssetTxDataScript() || txout.scriptPubKey.IsNullGlobalRestrictionAssetTxDataScript())
                 continue;
-            /** GEMS END */
+            /** GEMMA END */
 
             isminetype mine = wallet->IsMine(txout);
             if(mine & ISMINE_WATCH_ONLY) involvesWatchAddress = true;
@@ -134,10 +134,10 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             {
                 const CTxOut& txout = wtx.tx->vout[nOut];
 
-                /** GEMS START */
+                /** GEMMA START */
                 if (txout.scriptPubKey.IsAssetScript())
                     continue;
-                /** GEMS END */
+                /** GEMMA END */
 
                 TransactionRecord sub(hash, nTime);
                 sub.idx = nOut;
@@ -183,7 +183,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             //
 
 
-            /** GEMS START */
+            /** GEMMA START */
             // We will only show mixed debit transactions that are nNet < 0 or if they are nNet == 0 and
             // they do not contain assets. This is so the list of transaction doesn't add 0 amount transactions to the
             // list.
@@ -203,12 +203,12 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
                 parts.append(TransactionRecord(hash, nTime, TransactionRecord::Other, "", nNet, 0));
                 parts.last().involvesWatchAddress = involvesWatchAddress;
             }
-            /** GEMS END */
+            /** GEMMA END */
         }
     }
 
 
-    /** GEMS START */
+    /** GEMMA START */
     if (AreAssetsDeployed()) {
         CAmount nFee;
         std::string strSentAccount;
@@ -305,7 +305,7 @@ QList<TransactionRecord> TransactionRecord::decomposeTransaction(const CWallet *
             }
         }
     }
-    /** GEMS END */
+    /** GEMMA END */
 
     return parts;
 }
@@ -381,7 +381,7 @@ bool TransactionRecord::isSwapTransaction(const CWallet *wallet, const CWalletTx
                 {
                     if(wallet->IsMine(txout))
                     {
-                        //If we sent assets, we need to see if we were sent assets or GEMS in return
+                        //If we sent assets, we need to see if we were sent assets or GEMMA in return
                         if(txout.scriptPubKey.IsAssetScript())
                         {
                             if(fSentAssets) { //Check to skip asset change by name
@@ -396,7 +396,7 @@ bool TransactionRecord::isSwapTransaction(const CWallet *wallet, const CWalletTx
                             myReceievedOutput = txout;
                             break;
                         }
-                        else //We got GEMS
+                        else //We got GEMMA
                         {
                             if(fSentAssets) { //If we sent assets, this is ours. but we need to adjust for change.
                                 myReceievedOutput = txout;
@@ -427,13 +427,13 @@ bool TransactionRecord::isSwapTransaction(const CWallet *wallet, const CWalletTx
                 //Total price paid, need to use net calculation when we executed
                 sub.credit = mine ? myReceievedOutput.nValue : nNet;
                 std::string asset_qty_format = GemmaUnits::formatWithCustomName(QString::fromStdString(sentType), sentAmount, 2).toUtf8().constData();
-                sub.assetName = strprintf("GEMS (%s %s)", TransactionView::tr("Sold").toUtf8().constData(), asset_qty_format);
+                sub.assetName = strprintf("GEMMA (%s %s)", TransactionView::tr("Sold").toUtf8().constData(), asset_qty_format);
             } else if (fRecvAssets) {
                 //Buy!
                 //Total price paid, need to use net calculation when we executed
                 sub.credit = (mine ? -myProvidedInput.nValue : nNet);
                 std::string asset_qty_format = GemmaUnits::formatWithCustomName(QString::fromStdString(recvType), recvAmount, 2).toUtf8().constData();
-                sub.assetName = strprintf("GEMS (%s %s)", TransactionView::tr("Bought").toUtf8().constData(), asset_qty_format);
+                sub.assetName = strprintf("GEMMA (%s %s)", TransactionView::tr("Bought").toUtf8().constData(), asset_qty_format);
             } else {
                 LogPrintf("\tFell Through!\n");
                 return false; //!

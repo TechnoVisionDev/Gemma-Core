@@ -108,10 +108,10 @@ private Q_SLOTS:
 
     void customFeeFeatureChanged(bool);
 
-    /** GEMS START */
+    /** GEMMA START */
     void assetControlUpdateSendCoinsDialog();
     void focusAsset(const QModelIndex& index);
-    /** GEMS END */
+    /** GEMMA END */
 
     Q_SIGNALS:
             // Fired when a message should be reported to the user

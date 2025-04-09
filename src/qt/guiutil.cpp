@@ -271,7 +271,7 @@ bool parseGemmaURI(const QUrl &uri, SendCoinsRecipient *out)
         {
             if(!i->second.isEmpty())
             {
-                if(!GemmaUnits::parse(GemmaUnits::GEMS, i->second, &rv.amount))
+                if(!GemmaUnits::parse(GemmaUnits::GEMMA, i->second, &rv.amount))
                 {
                     return false;
                 }
@@ -310,7 +310,7 @@ QString formatGemmaURI(const SendCoinsRecipient &info)
 
     if (info.amount)
     {
-        ret += QString("?amount=%1").arg(GemmaUnits::format(GemmaUnits::GEMS, info.amount, false, GemmaUnits::separatorNever));
+        ret += QString("?amount=%1").arg(GemmaUnits::format(GemmaUnits::GEMMA, info.amount, false, GemmaUnits::separatorNever));
         paramCount++;
     }
 

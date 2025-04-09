@@ -171,7 +171,7 @@ GemmaGUI::GemmaGUI(const PlatformStyle *_platformStyle, const NetworkStyle *netw
         setCentralWidget(rpcConsole);
     }
 
-    /** GEMS START */
+    /** GEMMA START */
     labelCurrentMarket = new QLabel();
     labelCurrentPrice = new QLabel();
     headerWidget = new QWidget();
@@ -181,7 +181,7 @@ GemmaGUI::GemmaGUI(const PlatformStyle *_platformStyle, const NetworkStyle *netw
     labelVersionUpdate = new QLabel();
     networkVersionManager = new QNetworkAccessManager();
     versionRequest = new QNetworkRequest();
-    /** GEMS END */
+    /** GEMMA END */
 
     // Accept D&D of URIs
     setAcceptDrops(true);
@@ -366,7 +366,7 @@ void GemmaGUI::createActions()
     historyAction->setFont(font);
     tabGroup->addAction(historyAction);
 
-    /** GEMS START */
+    /** GEMMA START */
     createAssetAction = new QAction(platformStyle->SingleColorIconOnOff(":/icons/asset_create_selected", ":/icons/asset_create"), tr("&Create Assets"), this);
     createAssetAction->setStatusTip(tr("Create new assets"));
     createAssetAction->setToolTip(createAssetAction->statusTip());
@@ -376,7 +376,7 @@ void GemmaGUI::createActions()
     tabGroup->addAction(createAssetAction);
 
     transferAssetAction = new QAction(platformStyle->SingleColorIconOnOff(":/icons/asset_transfer_selected", ":/icons/asset_transfer"), tr("&Transfer Assets"), this);
-    transferAssetAction->setStatusTip(tr("Transfer assets to GEMS addresses"));
+    transferAssetAction->setStatusTip(tr("Transfer assets to GEMMA addresses"));
     transferAssetAction->setToolTip(transferAssetAction->statusTip());
     transferAssetAction->setCheckable(true);
     transferAssetAction->setShortcut(QKeySequence(Qt::ALT + Qt::Key_6));
@@ -415,7 +415,7 @@ void GemmaGUI::createActions()
     restrictedAssetAction->setFont(font);
     tabGroup->addAction(restrictedAssetAction);
 
-    /** GEMS END */
+    /** GEMMA END */
 
 #ifdef ENABLE_WALLET
     // These showNormalIfMinimized are needed because Send Coins and Receive Coins
@@ -584,7 +584,7 @@ void GemmaGUI::createToolBars()
         QSettings settings;
         bool IconsOnly = settings.value("fToolbarIconsOnly", false).toBool();
 
-        /** GEMS START */
+        /** GEMMA START */
         // Create the background and the vertical tool bar
         QWidget* toolbarWidget = new QWidget();
 
@@ -604,7 +604,7 @@ void GemmaGUI::createToolBars()
         }
         labelToolbar->setStyleSheet(".QLabel{background-color: transparent;}");
 
-        /** GEMS END */
+        /** GEMMA END */
 
         m_toolbar = new QToolBar();
         m_toolbar->setStyle(style());
@@ -640,7 +640,7 @@ void GemmaGUI::createToolBars()
         stringToUse = normalString;
 #endif
 
-        /** GEMS START */
+        /** GEMMA START */
         QString tbStyleSheet = ".QToolBar {background-color : transparent; border-color: transparent; }  "
                                ".QToolButton {background-color: transparent; border-color: transparent; width: 249px; color: %1; border: none;} "
                                ".QToolButton:checked {background: none; background-color: none; selection-background-color: none; color: %2; border: none; font: %4} "
@@ -813,7 +813,7 @@ void GemmaGUI::createToolBars()
         connect(pricingTimer, SIGNAL(timeout()), this, SLOT(getPriceInfo()));
         pricingTimer->start(10000);
         getPriceInfo();
-        /** GEMS END */
+        /** GEMMA END */
 
         // Get the latest Gemma release and let the user know if they are using the latest version
         // Network request code for the header widget
@@ -1041,14 +1041,14 @@ void GemmaGUI::setWalletActionsEnabled(bool enabled)
     usedReceivingAddressesAction->setEnabled(enabled);
     openAction->setEnabled(enabled);
 
-    /** GEMS START */
+    /** GEMMA START */
     transferAssetAction->setEnabled(false);
     createAssetAction->setEnabled(false);
     manageAssetAction->setEnabled(false);
     messagingAction->setEnabled(false);
     votingAction->setEnabled(false);
     restrictedAssetAction->setEnabled(false);
-    /** GEMS END */
+    /** GEMMA END */
 }
 
 void GemmaGUI::createTrayIcon(const NetworkStyle *networkStyle)
@@ -1199,7 +1199,7 @@ void GemmaGUI::gotoVerifyMessageTab(QString addr)
     if (walletFrame) walletFrame->gotoVerifyMessageTab(addr);
 }
 
-/** GEMS START */
+/** GEMMA START */
 void GemmaGUI::gotoAssetsPage()
 {
     transferAssetAction->setChecked(true);
@@ -1223,7 +1223,7 @@ void GemmaGUI::gotoRestrictedAssetsPage()
     restrictedAssetAction->setChecked(true);
     if (walletFrame) walletFrame->gotoRestrictedAssetsPage();
 };
-/** GEMS END */
+/** GEMMA END */
 #endif // ENABLE_WALLET
 
 void GemmaGUI::updateNetworkState()
@@ -1499,7 +1499,7 @@ void GemmaGUI::incomingTransaction(const QString& date, int unit, const CAmount&
 {
     // On new transaction, make an info balloon
     QString msg = tr("Date: %1\n").arg(date);
-    if (assetName == "GEMS")
+    if (assetName == "GEMMA")
         msg += tr("Amount: %1\n").arg(GemmaUnits::formatWithUnit(unit, amount, true));
     else
         msg += tr("Amount: %1\n").arg(GemmaUnits::formatWithCustomName(assetName, amount, MAX_ASSET_UNITS, true));
@@ -1519,7 +1519,7 @@ void GemmaGUI::checkAssets()
     // Check that status of RIP2 and activate the assets icon if it is active
     if(AreAssetsDeployed()) {
         transferAssetAction->setDisabled(false);
-        transferAssetAction->setToolTip(tr("Transfer assets to GEMS addresses"));
+        transferAssetAction->setToolTip(tr("Transfer assets to GEMMA addresses"));
         createAssetAction->setDisabled(false);
         createAssetAction->setToolTip(tr("Create new assets"));
         manageAssetAction->setDisabled(false);

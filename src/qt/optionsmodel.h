@@ -96,10 +96,10 @@ private:
     QString strThirdPartyTxUrls;
     QString strIpfsUrl;
     bool fCoinControlFeatures;
-    /** GEMS START*/
+    /** GEMMA START*/
     bool fCustomFeeFeatures;
     bool fDarkModeEnabled;
-    /** GEMS END*/
+    /** GEMMA END*/
     /* settings that were overridden by command-line */
     QString strOverriddenByCommandLine;
 

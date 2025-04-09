@@ -613,8 +613,8 @@
         <translation>Wis</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Warning: Invalid Gemma address</source>
@@ -1300,8 +1300,8 @@ Aanbevolen actie: Synchroniseer uw wallet volledig vooraleer uw transactie te ve
         <translation>Uw totale saldo</translation>
     </message>
     <message>
-        <source>GEMS Balances</source>
-        <translation>GEMS Balance</translation>
+        <source>GEMMA Balances</source>
+        <translation>GEMMA Balance</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>

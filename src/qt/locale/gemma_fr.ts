@@ -473,8 +473,8 @@
         <translation>Balance:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Sub Asset</source>
@@ -1086,8 +1086,8 @@
         <translation>Votre solde total actuel</translation>
     </message>
     <message>
-        <source>GEMS Balances</source>
-        <translation>Balance GEMS</translation>
+        <source>GEMMA Balances</source>
+        <translation>Balance GEMMA</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
@@ -2105,8 +2105,8 @@
         <translation>ex: 1.00000000</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy change</source>

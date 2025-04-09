@@ -145,7 +145,7 @@ class ReplaceByFeeTest(GemmaTestFramework):
         # This will raise an exception due to transaction replacement being disabled
         assert_raises_rpc_error(-26, "txn-mempool-conflict", self.nodes[1].sendrawtransaction, tx1b_hex, True)
 
-        # Extra 0.1 GEMS fee
+        # Extra 0.1 GEMMA fee
         tx1b = CTransaction()
         tx1b.vin = [CTxIn(tx0_outpoint, n_sequence=0)]
         tx1b.vout = [CTxOut(int(0.9 * COIN), CScript([b'b']))]
@@ -187,7 +187,7 @@ class ReplaceByFeeTest(GemmaTestFramework):
             prevout = COutPoint(int(txid, 16), 0)
 
         # Whether the double-spend is allowed is evaluated by including all
-        # child fees - 40 GEMS - so this attempt is rejected.
+        # child fees - 40 GEMMA - so this attempt is rejected.
         dbl_tx = CTransaction()
         dbl_tx.vin = [CTxIn(tx0_outpoint, n_sequence=0)]
         dbl_tx.vout = [CTxOut(initial_n_value - 30 * COIN, CScript([1]))]
@@ -257,7 +257,7 @@ class ReplaceByFeeTest(GemmaTestFramework):
         # This will raise an exception due to insufficient fee
         assert_raises_rpc_error(-26, "insufficient fee", self.nodes[0].sendrawtransaction, dbl_tx_hex, True)
 
-        # 1 GEMS fee is enough
+        # 1 GEMMA fee is enough
         dbl_tx = CTransaction()
         dbl_tx.vin = [CTxIn(tx0_outpoint, n_sequence=0)]
         dbl_tx.vout = [CTxOut(initial_n_value - fee * n - 1 * COIN, CScript([1]))]

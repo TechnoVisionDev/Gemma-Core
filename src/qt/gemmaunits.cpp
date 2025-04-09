@@ -18,9 +18,9 @@ GemmaUnits::GemmaUnits(QObject *parent):
 QList<GemmaUnits::Unit> GemmaUnits::availableUnits()
 {
     QList<GemmaUnits::Unit> unitlist;
-    unitlist.append(GEMS);
-    unitlist.append(mGEMS);
-    unitlist.append(uGEMS);
+    unitlist.append(GEMMA);
+    unitlist.append(mGEMMA);
+    unitlist.append(uGEMMA);
     return unitlist;
 }
 
@@ -28,9 +28,9 @@ bool GemmaUnits::valid(int unit)
 {
     switch(unit)
     {
-    case GEMS:
-    case mGEMS:
-    case uGEMS:
+    case GEMMA:
+    case mGEMMA:
+    case uGEMMA:
         return true;
     default:
         return false;
@@ -41,9 +41,9 @@ QString GemmaUnits::name(int unit)
 {
     switch(unit)
     {
-    case GEMS: return QString("GEMS");
-    case mGEMS: return QString("mGEMS");
-    case uGEMS: return QString::fromUtf8("μGEMS");
+    case GEMMA: return QString("GEMMA");
+    case mGEMMA: return QString("mGEMMA");
+    case uGEMMA: return QString::fromUtf8("μGEMMA");
     default: return QString("???");
     }
 }
@@ -52,9 +52,9 @@ QString GemmaUnits::description(int unit)
 {
     switch(unit)
     {
-    case GEMS: return QString("Gemmas");
-    case mGEMS: return QString("Milli-Gemmas (1 / 1" THIN_SP_UTF8 "000)");
-    case uGEMS: return QString("Micro-Gemmas (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
+    case GEMMA: return QString("Gemmas");
+    case mGEMMA: return QString("Milli-Gemmas (1 / 1" THIN_SP_UTF8 "000)");
+    case uGEMMA: return QString("Micro-Gemmas (1 / 1" THIN_SP_UTF8 "000" THIN_SP_UTF8 "000)");
     default: return QString("???");
     }
 }
@@ -63,9 +63,9 @@ qint64 GemmaUnits::factor(int unit)
 {
     switch(unit)
     {
-    case GEMS:  return 1000000;
-    case mGEMS: return 1000;
-    case uGEMS: return 10;
+    case GEMMA:  return 1000000;
+    case mGEMMA: return 1000;
+    case uGEMMA: return 10;
     default:   return 1000000;
     }
 }
@@ -91,9 +91,9 @@ int GemmaUnits::decimals(int unit)
 {
     switch(unit)
     {
-    case GEMS: return 6;
-    case mGEMS: return 3;
-    case uGEMS: return 0;
+    case GEMMA: return 6;
+    case mGEMMA: return 3;
+    case uGEMMA: return 0;
     default: return 0;
     }
 }
@@ -150,7 +150,7 @@ QString GemmaUnits::formatWithUnit(int unit, const CAmount& amount, bool plussig
 
 QString GemmaUnits::formatWithCustomName(QString customName, const CAmount& amount, int unit, bool plussign, SeparatorStyle separators)
 {
-    return format(GEMS, amount / factorAsset(MAX_ASSET_UNITS - unit), plussign, separators, unit) + QString(" ") + customName;
+    return format(GEMMA, amount / factorAsset(MAX_ASSET_UNITS - unit), plussign, separators, unit) + QString(" ") + customName;
 }
 
 QString GemmaUnits::formatHtmlWithUnit(int unit, const CAmount& amount, bool plussign, SeparatorStyle separators)

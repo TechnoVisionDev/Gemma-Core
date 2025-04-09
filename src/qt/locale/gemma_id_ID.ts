@@ -1591,8 +1591,8 @@
         <translation>Alamat</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy fee</source>

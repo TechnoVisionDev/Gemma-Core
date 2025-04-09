@@ -62,9 +62,9 @@ public:
      */
     enum Unit
     {
-        GEMS,
-        mGEMS,
-        uGEMS
+        GEMMA,
+        mGEMMA,
+        uGEMMA
     };
 
     enum SeparatorStyle

@@ -1987,8 +1987,8 @@ Recommended action: Fully sync your wallet before sending a transaction.
         <translation>Салдо</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>

@@ -905,8 +905,8 @@
         <translation>Adresse:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>GEMS adressen som skal eie aktivumet. (Du må eie denne adressen). La stå tom for å lage ny adresse.</translation>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>GEMMA adressen som skal eie aktivumet. (Du må eie denne adressen). La stå tom for å lage ny adresse.</translation>
     </message>
     <message>
         <source>Warning:</source>
@@ -1009,8 +1009,8 @@
         <translation>Saldo:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>
@@ -1858,8 +1858,8 @@
         <translation>Din nåværende saldo</translation>
     </message>
     <message>
-        <source>GEMS Balances</source>
-        <translation>GEMS Oversikt</translation>
+        <source>GEMMA Balances</source>
+        <translation>GEMMA Oversikt</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>

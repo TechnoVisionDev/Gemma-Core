@@ -945,8 +945,8 @@
         <translation>Adresse:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>Die GEMS-Adresse, die dieses Asset halten wird (Sie müssen diese Adresse besitzen). Das Feld Leer lassen, um eine neue Adresse zu erstellen.</translation>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>Die GEMMA-Adresse, die dieses Asset halten wird (Sie müssen diese Adresse besitzen). Das Feld Leer lassen, um eine neue Adresse zu erstellen.</translation>
     </message>
     <message>
         <source>Verifier String:</source>
@@ -1081,8 +1081,8 @@
         <translation>Kontostand:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123.456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123.456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>
@@ -1727,8 +1727,8 @@ Sie sind nicht wiederherstellbar!</translation>
         <translation>Benutzerdefinierte Absicht bzw. Verwendungszweck der Transaktion</translation>
     </message>
     <message>
-        <source>The asset (or GEMS) removed or added to balance.</source>
-        <translation>Das Asset (oder GEMS), das entfernt oder zum Bestand hinzugefügt wurde.</translation>
+        <source>The asset (or GEMMA) removed or added to balance.</source>
+        <translation>Das Asset (oder GEMMA), das entfernt oder zum Bestand hinzugefügt wurde.</translation>
     </message>
 </context>
 <context>
@@ -1805,8 +1805,8 @@ Sie sind nicht wiederherstellbar!</translation>
         <translation>&amp;Währungseinheit:</translation>
     </message>
     <message>
-        <source>Choose which currency to display the realtime value of GEMS in (ie: BTC/GEMS).</source>
-        <translation>Wählen Sie, in welcher Währung der Echtzeitwert von GEMS angezeigt wird (z.B.: BTC/GEMS).</translation>
+        <source>Choose which currency to display the realtime value of GEMMA in (ie: BTC/GEMMA).</source>
+        <translation>Wählen Sie, in welcher Währung der Echtzeitwert von GEMMA angezeigt wird (z.B.: BTC/GEMMA).</translation>
     </message>
     <message>
         <source>Third party URLs (e.g. a block explorer) that appear in the transactions tab as context menu items. %s in the URL is replaced by transaction hash. Multiple URLs are separated by vertical bar |.</source>
@@ -2048,8 +2048,8 @@ Sie sind nicht wiederherstellbar!</translation>
         <translation>Aktueller Gesamtbetrag aus obigen Kategorien</translation>
     </message>
     <message>
-        <source>GEMS Balances</source>
-        <translation>GEMS Kontostände</translation>
+        <source>GEMMA Balances</source>
+        <translation>GEMMA Kontostände</translation>
     </message>
     <message>
         <source>Your current balance in watch-only addresses</source>
@@ -2693,8 +2693,8 @@ Sie sind nicht wiederherstellbar!</translation>
         <translation>&amp;Assets verschicken</translation>
     </message>
     <message>
-        <source>Transfer assets to GEMS addresses</source>
-        <translation>Assets an GEMS Adressen verschicken</translation>
+        <source>Transfer assets to GEMMA addresses</source>
+        <translation>Assets an GEMMA Adressen verschicken</translation>
     </message>
     <message>
         <source>&amp;Manage Assets</source>
@@ -3251,8 +3251,8 @@ Sie sind nicht wiederherstellbar!</translation>
         <translation>Adresse:</translation>
     </message>
     <message>
-        <source>The GEMS address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
-        <translation>Die GEMS-Adresse, die dieses Asset halten wird (Sie müssen diese Adresse besitzen). Das Feld leer lassen, um eine neue Adresse zu erstellen.</translation>
+        <source>The GEMMA address that will hold this asset (You must own this address). Leave blank to create a new address.</source>
+        <translation>Die GEMMA-Adresse, die dieses Asset halten wird (Sie müssen diese Adresse besitzen). Das Feld leer lassen, um eine neue Adresse zu erstellen.</translation>
     </message>
     <message>
         <source>Verifier String:</source>
@@ -3359,8 +3359,8 @@ Sie sind nicht wiederherstellbar!</translation>
         <translation>Kontostand:</translation>
     </message>
     <message>
-        <source>123.456 GEMS</source>
-        <translation>123,456 GEMS</translation>
+        <source>123.456 GEMMA</source>
+        <translation>123,456 GEMMA</translation>
     </message>
     <message>
         <source>Copy quantity</source>

@@ -19,7 +19,7 @@ static const CAmount CENT = 10000;
 /** No amount larger than this (in satoshi) is valid.
  *
  * Note that this constant is *not* the total money supply, which in Gemma
- * currently happens to be less than 840,000,000,000 GEMS for various reasons, but
+ * currently happens to be less than 840,000,000,000 GEMMA for various reasons, but
  * rather a sanity check. As this sanity check is used by consensus-critical
  * validation code, the exact value of the MAX_MONEY constant is consensus
  * critical; in unusual circumstances like a(nother) overflow bug that allowed

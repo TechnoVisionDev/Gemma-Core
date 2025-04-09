@@ -1114,10 +1114,10 @@ bool EvalScript(std::vector<std::vector<unsigned char> > &stack, const CScript &
                     }
                         break;
 
-                        /** GEMS START */
+                        /** GEMMA START */
                     case OP_GEMS_ASSET:
                         break;
-                        /** GEMS END */
+                        /** GEMMA END */
 
 
                     default:

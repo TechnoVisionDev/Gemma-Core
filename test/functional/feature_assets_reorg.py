@@ -16,7 +16,7 @@ class AssetReorgTest(GemmaTestFramework):
 
 
     def activate_assets(self):
-        self.log.info("Generating GEMS and activating assets...")
+        self.log.info("Generating GEMMA and activating assets...")
         n0, n1 = self.nodes[0], self.nodes[1]
 
         n0.generate(1)
