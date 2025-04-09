@@ -74,6 +74,10 @@ Running a full node helps contribute to the Gemma network's security and decentr
 		<td width="230"><b>Mainnet Peer Port</b></td>
 		<td width="270">4682</td>
 	</tr>
+		<tr>
+		<td width="230"><b>Mainnet RPC Port</b></td>
+		<td width="270">2330</td>
+	</tr>
 </table>
 
 ## Ongoing development 💻
