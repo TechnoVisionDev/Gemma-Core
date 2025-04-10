@@ -115,12 +115,12 @@ static const int MAX_URI_LENGTH = 255;
 #define SPINNER_FRAMES 36
 
 #define QAPP_ORG_NAME "Gemma"
-#define QAPP_ORG_DOMAIN "gemma.org"
+#define QAPP_ORG_DOMAIN "gemmacoin.io"
 #define QAPP_APP_NAME_DEFAULT "Gemma-Qt"
 #define QAPP_APP_NAME_TESTNET "Gemma-Qt-testnet"
 
 /* Default third party browser urls */
-#define DEFAULT_THIRD_PARTY_BROWSERS "https://api.gemmacoin.org/tx/%s|https://rvn.cryptoscope.io/tx/?txid=%s|https://blockbook.gemmacoin.org/tx/%s|https://explorer.mangofarmassets.com/tx/%s|https://www.assetsexplorer.com/tx/%s|https://explorer.gemmaland.org/tx/%s"
+#define DEFAULT_THIRD_PARTY_BROWSERS "https://explorer.gemmacoin.io/tx/%s"
 
 /* Default IPFS viewer */
 #define DEFAULT_IPFS_VIEWER "https://ipfs.io/ipfs/%s"
