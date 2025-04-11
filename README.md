@@ -10,21 +10,21 @@ The Gemma Core software acts as a wallet and allows anyone to operate a node for
 
 **Website:** [http://gemmacoin.io/](http://gemmacoin.io/)
 
-## General Info
+## 🚀 General Info
 
 Gemma was designed with a high supply to allow micropayments that are fractions of a penny!
 
 * Addresses start with `G`
 * Coin Name    : Gemma
 * Coin ticker  : GEMMA
-* Algorithm    : KAWPOW
-* Block Time   : 60 seconds
+* Algorithm    : KawPow
 * Default Port : 4682
+* Block Time   : 60 Seconds
+* Max Supply   : 840 Billion
 * Explorer     : https://explorer.gemmacoin.io
-* Wallet       : https://github.com/TechnoVisionDev/Gemma-Core
 
 
-## Usage 💻
+## 💻 Usage
 
 To start your journey with Gemma Core, see the [installation guide](INSTALL.md) and the [getting started](doc/getting-started.md) tutorial.
 
@@ -80,64 +80,19 @@ Running a full node helps contribute to the Gemma network's security and decentr
 	</tr>
 </table>
 
-## Ongoing development 💻
+## ❤️ Communities
 
-Gemma Core is an open source and community driven software. The development
-process is open and publicly visible; anyone can see, discuss and work on the
-software.
-
-Main development resources:
-
-* [GitHub Projects](https://github.com/TechnoVisionDev/Gemma-Core/projects) is used to
-  follow planned and in-progress work for upcoming releases.
-* [GitHub Discussion](https://github.com/TechnoVisionDev/Gemma-Core/discussions) is used
-  to discuss features, planned and unplanned, related to both the development of
-  the Gemma Core software, the underlying protocols and the GEMMA asset.
-
-
-### Version strategy
-Version numbers are following ```major.minor.patch``` semantics.
-
-### Branches
-There are 3 types of branches in this repository:
-
-- **master:** Stable, contains the latest version of the latest *major.minor* release.
-- **maintenance:** Stable, contains the latest version of previous releases, which are still under active maintenance. Format: ```<version>-maint```
-- **development:** Unstable, contains new code for planned releases. Format: ```<version>-dev```
-
-*Master and maintenance branches are exclusively mutable by release. Planned*
-*releases will always have a development branch and pull requests should be*
-*submitted against those. Maintenance branches are there for **bug fixes only,***
-*please submit new features against the development branch with the highest version.*
-
-## Contributing 🤝
-
-If you find a bug or experience issues with this software, please report it
-using the [issue system](https://github.com/TechnoVisionDev/Gemma-Core/issues).
-
-Please see [the contribution guide](CONTRIBUTING.md) to see how you can
-participate in the development of Gemma Core. There are often
-[topics seeking help](https://github.com/TechnoVisionDev/Gemma-Core/labels/help%20wanted)
-where your contributions will have high impact and get very appreciation.
-
-## Communities 🐸
-
-You can join the communities on different social media.
+You can join our community on different social media.
 To see what's going on, meet people & discuss, learn
 about Gemma, give or ask for help, to share your project.
 
 Here are some places to visit:
-
-
-* [Discord](https://discord.gg/hpbMxBTDAb)
 * [Website](http://gemmacoin.io/)
-* [X](https://x.com/gemma_coin)
+* [Discord](https://discord.gg/hpbMxBTDAb)
+* [Twitter (X)](https://x.com/gemma_coin)
+* [Reddit](https://www.reddit.com/r/gemmacoin)
+* [Telegram](https://t.me/GemmaCoin)
 
-## Frequently Asked Questions ❓
-
-Do you have a question regarding Gemma? An answer is perhaps already in the [FAQ](doc/FAQ.md) or the [Q&A section](https://github.com/TechnoVisionDev/Gemma-Core/discussions/categories/q-a) of the discussion board!
-
-## License ⚖️
-Gemma Core is released under the terms of the MIT license. See
-[COPYING](COPYING) for more information or see
-[opensource.org](https://opensource.org/licenses/MIT)
+## ⚖️ License
+Gemma Core is released under the terms of the MIT license. 
+See [COPYING](COPYING) for more information or see [opensource.org](https://opensource.org/licenses/MIT)
