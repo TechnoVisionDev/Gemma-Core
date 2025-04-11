@@ -26,8 +26,6 @@ Gemma was designed with a high supply to allow micropayments that are fractions 
 
 ## 💻 Usage
 
-To start your journey with Gemma Core, see the [installation guide](INSTALL.md) and the [getting started](doc/getting-started.md) tutorial.
-
 The JSON-RPC API provided by Gemma Core is self-documenting and can be browsed with `gemma-cli help`, while detailed information for each command can be viewed with `gemma-cli help <command>`. Alternatively, see the [Bitcoin Core documentation](https://developer.bitcoin.org/reference/rpc/) - which implement a similar protocol - to get a browsable version.
 
 <font face="Verdana"><b>Block Rewards Distribution</b></font>
