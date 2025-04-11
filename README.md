@@ -80,9 +80,9 @@ Running a full node helps contribute to the Gemma network's security and decentr
 
 ## ❤️ Communities
 
-You can join our community on different social media.
-To see what's going on, meet people & discuss, learn
-about Gemma, give or ask for help, to share your project.
+You can join our community on different social media sites 
+to see what's going on, meet people & discuss, learn
+about Gemma, or anything else you can think of!
 
 Here are some places to visit:
 * [Website](http://gemmacoin.io/)
