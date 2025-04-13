@@ -107,11 +107,7 @@ const QString GemmaGUI::DEFAULT_WALLET = "~Default";
 
 /* Bit of a bodge, c++ really doesn't want you to predefine values
  * in only header files, so we do one-time value assignment here. */
-std::array<CurrencyUnitDetails, 5> CurrencyUnits::CurrencyOptions = { {
-    { "BTC",    "GEMSBTC"  , 1,          8},
-    { "mBTC",   "GEMSBTC"  , 1000,       5},
-    { "µBTC",   "GEMSBTC"  , 1000000,    2},
-    { "Satoshi","GEMSBTC"  , 100000000,  0},
+ std::array<CurrencyUnitDetails, 1> CurrencyUnits::CurrencyOptions = { {
     { "USDT",   "GEMSUSDT" , 1,          5}
 } };
 
@@ -722,7 +718,7 @@ void GemmaGUI::createToolBars()
         comboRvnUnit->setStyleSheet(STRING_LABEL_COLOR);
         comboRvnUnit->setFont(currentMarketFont);
 
-        labelVersionUpdate->setText("<a href=\"https://github.com/GemmaProject/Gemma/releases\">New Wallet Version Available</a>");
+        labelVersionUpdate->setText("<a href=\"https://github.com/TechnoVisionDev/Gemma-Core/releases\">New Wallet Version Available</a>");
         labelVersionUpdate->setTextFormat(Qt::RichText);
         labelVersionUpdate->setTextInteractionFlags(Qt::TextBrowserInteraction);
         labelVersionUpdate->setOpenExternalLinks(true);
@@ -896,7 +892,7 @@ void GemmaGUI::createToolBars()
                                            "New Wallet Version Found",
                                            CClientUIInterface::MSG_VERSION | CClientUIInterface::BTN_NO);
                                    if (fRet) {
-                                       QString link = "https://github.com/GemmaProject/Gemma/releases";
+                                       QString link = "https://github.com/TechnoVisionDev/Gemma-Core/releases";
                                        QDesktopServices::openUrl(QUrl(link));
                                    }
                                }
@@ -1879,8 +1875,40 @@ void GemmaGUI::onCurrencyChange(int newIndex)
 
 void GemmaGUI::getPriceInfo()
 {
-    request->setUrl(QUrl(QString("https://api.binance.com/api/v1/ticker/price?symbol=%1").arg(this->currentPriceDisplay->Ticker)));
-    networkManager->get(*request);
+    // Set the CoinPaprika API endpoint for the gemma-gemma pair
+    const QString apiUrl = "https://api.coinpaprika.com/v1/tickers/gemma-gemma";
+
+    // Update the request URL
+    request->setUrl(QUrl(apiUrl));
+
+    // Send the GET request
+    QNetworkReply *reply = networkManager->get(*request);
+
+    // Handle the response
+    connect(reply, &QNetworkReply::finished, this, [this, reply]() {
+        if (reply->error() == QNetworkReply::NoError) {
+            // Parse the JSON response
+            const QByteArray responseData = reply->readAll();
+            const QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData);
+            const QJsonObject jsonObj = jsonDoc.object();
+
+            // Extract the price in USD
+            const QJsonObject quotes = jsonObj["quotes"].toObject();
+            const QJsonObject usdQuote = quotes["USD"].toObject();
+            const double price = usdQuote["price"].toDouble();
+
+            // Format the price for display
+            const QString formattedPrice = QString::number(price, 'f', 10);
+
+            // Update the label with the fetched price
+            labelCurrentPrice->setText("USDT " + formattedPrice);
+        } else {
+            // Clear the label if unable to fetch the price
+            labelCurrentPrice->clear();
+        }
+
+        reply->deleteLater();
+    });
 }
 
 #ifdef ENABLE_WALLET
@@ -1893,6 +1921,6 @@ void GemmaGUI::mnemonic()
 
 void GemmaGUI::getLatestVersion()
 {
-    versionRequest->setUrl(QUrl("https://api.github.com/repos/GemmaProject/Gemma/releases"));
+    versionRequest->setUrl(QUrl("https://api.github.com/repos/TechnoVisionDev/Gemma-Core/releases"));
     networkVersionManager->get(*versionRequest);
 }
