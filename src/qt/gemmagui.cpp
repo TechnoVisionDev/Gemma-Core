@@ -1901,7 +1901,7 @@ void GemmaGUI::getPriceInfo()
             const QString formattedPrice = QString::number(price, 'f', 10);
 
             // Update the label with the fetched price
-            labelCurrentPrice->setText("USDT " + formattedPrice);
+            labelCurrentPrice->setText(formattedPrice);
         } else {
             // Clear the label if unable to fetch the price
             labelCurrentPrice->clear();
