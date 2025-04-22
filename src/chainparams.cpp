@@ -299,18 +299,18 @@ public:
         nAddNullQualifierTagBurnAmount = 4 * COIN;
 
         // Burn Addresses
-        strIssueAssetBurnAddress = "G1111111111111111111111111111111115";
-        strReissueAssetBurnAddress = "G22222222222222222222222222222222F1";
-        strIssueSubAssetBurnAddress = "G33333333333333333333333333333333Xv";
-        strIssueUniqueAssetBurnAddress = "G44444444444444444444444444444444Hk";
-        strIssueMsgChannelAssetBurnAddress = "G55555555555555555555555555555555JQ";
-        strIssueQualifierAssetBurnAddress = "G66666666666666666666666666666666B7";
-        strIssueSubQualifierAssetBurnAddress = "G77777777777777777777777777777777yE";
-        strIssueRestrictedAssetBurnAddress = "G88888888888888888888888888888888zT";
-        strAddNullQualifierTagBurnAddress = "G99999999999999999999999999999999wN";
+        strIssueAssetBurnAddress = "GHqvR8KwyrcJ5UJHvwf7RmLtvAnr5uTHdV";
+        strReissueAssetBurnAddress = "GhBXQEdEh35AtuSNxMzRutcgYg3ndqcaGX";
+        strIssueSubAssetBurnAddress = "Ge9LZnaTAJyPeALXCZCUJ28Tv1kqHRhkZE";
+        strIssueUniqueAssetBurnAddress = "GKQAMCcZtsJkfZqmLEkGPmq1psQeHtPeGZ";
+        strIssueMsgChannelAssetBurnAddress = "GZQKjsC97yasxRj1wtYf5rC61Axop43vXR";
+        strIssueQualifierAssetBurnAddress = "GKWBH5AU9x2HkS6X38D3qKZdxMeNi9ajxT";
+        strIssueSubQualifierAssetBurnAddress = "GHwEJ5Ah2yUSTwvG8YnEn7qquri8RXchJC";
+        strIssueRestrictedAssetBurnAddress = "GZWLfdSyJ8ohrNk2E6jXzAjSVM6DcqG1t9";
+        strAddNullQualifierTagBurnAddress = "GbFW1Qdp8CUqLWUZzDLqAM54T9gmHYWPxg";
 
         //Global Burn Address
-        strGlobalBurnAddress = "GFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFfV";
+        strGlobalBurnAddress = "GXr5onuXCxtRNLBYYbTW7qhy6UM1fTGDuU";
 
         // DGW Activation
         nDGWActivationBlock = 200;
