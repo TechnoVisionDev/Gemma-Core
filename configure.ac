@@ -2,7 +2,7 @@ dnl require autoconf 2.60 (AS_ECHO/AS_ECHO_N)
 AC_PREREQ([2.60])
 define(_CLIENT_VERSION_MAJOR, 1)
 define(_CLIENT_VERSION_MINOR, 2)
-define(_CLIENT_VERSION_REVISION, 1)
+define(_CLIENT_VERSION_REVISION, 2)
 define(_CLIENT_VERSION_BUILD, 0)
 define(_CLIENT_VERSION_RC, 0)
 define(_CLIENT_VERSION_IS_RELEASE, true)
@@ -1357,3 +1357,7 @@ echo "  CXXFLAGS        = $CXXFLAGS"
 echo "  LDFLAGS         = $LDFLAGS"
 echo "  ARFLAGS         = $ARFLAGS"
 echo
+
+if test x$use_qtdbus = xyes; then
+  AC_DEFINE([USE_DBUS], [1], [Enable DBus support])
+fi
