@@ -1893,6 +1893,6 @@ void GemmaGUI::mnemonic()
 
 void GemmaGUI::getLatestVersion()
 {
-    versionRequest->setUrl(QUrl("https://api.github.com/repos/GemmaProject/Gemma/releases"));
+    versionRequest->setUrl(QUrl("https://api.github.com/repos/TechnoVisionDev/Gemma-Core/releases"));
     networkVersionManager->get(*versionRequest);
 }
