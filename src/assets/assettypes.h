@@ -13,7 +13,8 @@
 #include "script/standard.h"
 #include "primitives/transaction.h"
 
-#define MAX_UNIT 6
+#define MAX_UNIT 8
+#define MAX_NEW_UNIT 6
 #define MIN_UNIT 0
 
 class CAssetsCache;
