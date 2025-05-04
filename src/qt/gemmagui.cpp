@@ -763,7 +763,7 @@ void GemmaGUI::createToolBars()
         setCentralWidget(containerWidget);
 
         // Network request code for the header widget
-        QObject::connect(networkManager, &QNetworkAccessManager::finished,
+        /*QObject::connect(networkManager, &QNetworkAccessManager::finished,
                          this, [=](QNetworkReply *reply) {
                     if (reply->error()) {
                         labelCurrentPrice->setText("");
@@ -771,14 +771,6 @@ void GemmaGUI::createToolBars()
                         return;
                     }
                     // Get the data from the network request
-                    /*QString answer = reply->readAll();
-
-                    // Create regex expression to find the value with 8 decimals
-                    QRegExp rx("\\d*.\\d\\d\\d\\d\\d\\d\\d\\d");
-                    rx.indexIn(answer);
-
-                    // List the found values
-                    QStringList list = rx.capturedTexts();*/
                     QByteArray responseData = reply->readAll();
                     QStringList list;
                     QString url = reply->url().toString();
@@ -831,7 +823,100 @@ void GemmaGUI::createToolBars()
                         }
                     }
                 }
-        );
+        );*/
+
+        QObject::connect(networkManager, &QNetworkAccessManager::finished,
+            this, [=](QNetworkReply *reply) {
+                if (reply->error()) {
+                    labelCurrentPrice->setText("");
+                    qDebug() << "❌ Network Error:" << reply->errorString();
+                    reply->deleteLater();
+                    return;
+                }
+        
+                QByteArray responseData = reply->readAll();
+                QString url = reply->url().toString();
+        
+                qDebug() << "🌐 URL:" << url;
+                qDebug() << "📦 Raw Response:" << responseData;
+        
+                QStringList list;
+        
+                if (url.contains("coinpaprika")) {
+                    // CoinPaprika: Parse nested JSON
+                    QJsonParseError parseError;
+                    QJsonDocument jsonDoc = QJsonDocument::fromJson(responseData, &parseError);
+                    if (parseError.error != QJsonParseError::NoError || !jsonDoc.isObject()) {
+                        qDebug() << "❌ JSON parse error:" << parseError.errorString();
+                        labelCurrentPrice->setText("");
+                        reply->deleteLater();
+                        return;
+                    }
+        
+                    QJsonObject obj = jsonDoc.object();
+                    double priceUsd = obj["quotes"].toObject()["USD"].toObject()["price"].toDouble();
+        
+                    qDebug() << "💰 Parsed Price (coinpaprika):" << priceUsd;
+                    list << QString::number(priceUsd, 'f', 8);
+                } else {
+                    // Binance: Use regex to extract price from simple JSON
+                    QRegExp rx("\\d*\\.\\d{1,8}");
+                    rx.indexIn(QString(responseData));
+                    list = rx.capturedTexts();
+        
+                    qDebug() << "💰 Parsed Price (binance):" << (list.isEmpty() ? "none" : list.first());
+                }
+        
+                QString currentPriceStyleSheet = ".QLabel{color: %1;}";
+        
+                bool ok;
+                if (!list.isEmpty()) {
+                    qDebug() << "📊 Raw Price String:" << list.first();
+                    qDebug() << "📊 Scalar:" << this->currentPriceDisplay->Scalar;
+                    qDebug() << "📊 Decimals:" << this->currentPriceDisplay->Decimals;
+        
+                    double next = list.first().toDouble(&ok) * this->currentPriceDisplay->Scalar;
+        
+                    if (!ok) {
+                        labelCurrentPrice->setStyleSheet(currentPriceStyleSheet.arg(COLOR_LABELS.name()));
+                        labelCurrentPrice->setText("");
+                    } else {
+                        QString currentLabel = labelCurrentPrice->text();
+                        qDebug() << "🔍 Current label text before parsing:" << currentLabel;
+        
+                        double current = currentLabel.toDouble(&ok);
+                        if (!ok) {
+                            current = 0.00000000;
+                        } else {
+                            if (next < current && !this->unitChanged)
+                                labelCurrentPrice->setStyleSheet(currentPriceStyleSheet.arg("red"));
+                            else if (next > current && !this->unitChanged)
+                                labelCurrentPrice->setStyleSheet(currentPriceStyleSheet.arg("green"));
+                            else
+                                labelCurrentPrice->setStyleSheet(currentPriceStyleSheet.arg(COLOR_LABELS.name()));
+                        }
+        
+                        this->unitChanged = false;
+        
+                        // ✅ PATCHED: use higher decimals for small prices
+                        int displayDecimals = (next < 0.00001 && this->currentPriceDisplay->Decimals < 8)
+                                              ? 8
+                                              : this->currentPriceDisplay->Decimals;
+        
+                        QString formattedPrice = QString::number(next, 'f', displayDecimals);
+                        labelCurrentPrice->setText(formattedPrice);
+        
+                        labelCurrentPrice->setToolTip(
+                            url.contains("coinpaprika")
+                                ? tr("Brought to you by coinpaprika.com")
+                                : tr("Brought to you by binance.com"));
+                    }
+                }
+        
+                reply->deleteLater();
+        });
+        
+        
 
         connect(quitAction, SIGNAL(triggered()), qApp, SLOT(quit()));
 
