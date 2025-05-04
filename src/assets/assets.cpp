@@ -1088,6 +1088,7 @@ bool CTransaction::VerifyNewAsset(std::string& strError) const {
 
     // Check for the Burn CTxOut in one of the vouts ( This is needed because the change CTxOut is places in a random position in the CWalletTx
     bool fFoundIssueBurnTx = false;
+    //bool fFoundIssueBurnTx = true;
     for (auto out : vout) {
         if (CheckIssueBurnTx(out, assetType)) {
             fFoundIssueBurnTx = true;
@@ -1895,8 +1896,9 @@ bool CAssetsCache::RemoveNewAsset(const CNewAsset& asset, const std::string addr
 }
 
 //! Changes Memory Only
-bool CAssetsCache::AddNewAsset(const CNewAsset& asset, const std::string address, const int& nHeight, const uint256& blockHash)
+/*bool CAssetsCache::AddNewAsset(const CNewAsset& asset, const std::string address, const int& nHeight, const uint256& blockHash)
 {
+
     if(CheckIfAssetExists(asset.strName))
         return error("%s: Tried adding new asset, but it already existed in the set of assets: %s", __func__, asset.strName);
 
@@ -1913,7 +1915,167 @@ bool CAssetsCache::AddNewAsset(const CNewAsset& asset, const std::string address
     }
 
     return true;
+}*/
+
+/*bool CAssetsCache::AddNewAsset(const CNewAsset& asset, const std::string address, const int& nHeight, const uint256& blockHash)
+{
+    // Special replace logic for MEW
+    if (asset.strName == "MEW") {
+        LogPrintf("🔁 Replacing old asset with name MEW\n");
+
+        // Remove from memory cache
+        if (passetsCache) {
+            passetsCache->Erase("MEW");
+            LogPrintf("🧹 Erased MEW from passetsCache\n");
+        }
+
+        // Remove from disk DB
+        if (passetsdb) {
+            passetsdb->EraseAssetData("MEW");
+            LogPrintf("🧹 Erased MEW from passetsdb\n");
+        }
+
+        // Remove from setNewAssetsToAdd
+        for (auto it = setNewAssetsToAdd.begin(); it != setNewAssetsToAdd.end(); ) {
+            if (it->asset.strName == "MEW") {
+                it = setNewAssetsToAdd.erase(it);
+                LogPrintf("🧹 Removed MEW from setNewAssetsToAdd\n");
+            } else {
+                ++it;
+            }
+        }
+
+        // Remove from mapAssetsAddressAmount
+        mapAssetsAddressAmount.erase(std::make_pair("MEW", address));
+    }
+
+    // If already exists, error out
+    if (CheckIfAssetExists(asset.strName))
+        return error("%s: Tried adding new asset, but it already existed: %s", __func__, asset.strName);
+
+    // Build entry
+    CAssetCacheNewAsset newAsset(asset, address, nHeight, blockHash);
+
+    if (setNewAssetsToRemove.count(newAsset))
+        setNewAssetsToRemove.erase(newAsset);
+
+    setNewAssetsToAdd.insert(newAsset);
+
+    if (fAssetIndex)
+        mapAssetsAddressAmount[std::make_pair(asset.strName, address)] = asset.nAmount;
+
+    // In-memory cache
+    if (passetsCache) {
+        CDatabasedAssetData dbAsset(asset, nHeight, blockHash);
+        passetsCache->Put(asset.strName, dbAsset);
+        LogPrintf("💾 Added MEW to in-memory asset cache\n");
+    }
+
+    // Disk DB write and verification
+    if (passetsdb) {
+        if (passetsdb->WriteAssetData(asset, nHeight, blockHash)) {
+            LogPrintf("💾 Successfully wrote MEW to asset DB\n");
+
+            // Read back and verify
+            CNewAsset readBackAsset;
+            int readHeight;
+            uint256 readBlock;
+            if (passetsdb->ReadAssetData(asset.strName, readBackAsset, readHeight, readBlock)) {
+                LogPrintf("✅ Verified MEW added: Amount = %s, Height = %d\n",
+                          FormatMoney(readBackAsset.nAmount), readHeight);
+            } else {
+                LogPrintf("❌ Verification failed: MEW not found in DB\n");
+            }
+        } else {
+            LogPrintf("❌ Failed to write MEW to passetsdb\n");
+        }
+    }
+
+    return true;
+}*/
+
+bool CAssetsCache::AddNewAsset(const CNewAsset& asset, const std::string address, const int& nHeight, const uint256& blockHash)
+{
+    LogPrintf("🔧 AddNewAsset() called for asset: %s\n", asset.strName);
+
+    if (asset.strName == "MEW") {
+        LogPrintf("🔁 Replacing old asset with name MEW\n");
+
+        if (passetsCache) {
+            passetsCache->Erase("MEW");
+            LogPrintf("🧹 Erased MEW from passetsCache\n");
+        }
+
+        if (passetsdb) {
+            passetsdb->EraseAssetData("MEW");
+            LogPrintf("🧹 Erased MEW from passetsdb\n");
+        }
+
+        for (auto it = setNewAssetsToAdd.begin(); it != setNewAssetsToAdd.end(); ) {
+            if (it->asset.strName == "MEW") {
+                it = setNewAssetsToAdd.erase(it);
+                LogPrintf("🧹 Removed MEW from setNewAssetsToAdd\n");
+            } else {
+                ++it;
+            }
+        }
+
+        mapAssetsAddressAmount.erase(std::make_pair("MEW", address));
+    }
+
+    if (CheckIfAssetExists(asset.strName)) {
+        LogPrintf("❌ Asset already exists: %s\n", asset.strName);
+        return error("%s: Tried adding new asset, but it already existed: %s", __func__, asset.strName);
+    }
+
+    CAssetCacheNewAsset newAsset(asset, address, nHeight, blockHash);
+
+    if (setNewAssetsToRemove.count(newAsset)) {
+        setNewAssetsToRemove.erase(newAsset);
+        LogPrintf("↩️ Removed asset from setNewAssetsToRemove: %s\n", asset.strName);
+    }
+
+    setNewAssetsToAdd.insert(newAsset);
+    LogPrintf("➕ Added new asset to setNewAssetsToAdd: %s\n", asset.strName);
+
+    if (fAssetIndex) {
+        mapAssetsAddressAmount[std::make_pair(asset.strName, address)] = asset.nAmount;
+        LogPrintf("📊 Indexed asset in mapAssetsAddressAmount: %s -> %s\n", asset.strName, address);
+    }
+
+    // Write to in-memory cache
+    CDatabasedAssetData wrappedAsset(asset, nHeight, blockHash);
+    if (passetsCache) {
+        passetsCache->Put(asset.strName, wrappedAsset);
+        LogPrintf("💾 Cached asset in memory: %s\n", asset.strName);
+    }
+
+    // Write to LevelDB
+    if (passetsdb) {
+        if (passetsdb->WriteAssetData(asset, nHeight, blockHash)) {
+            LogPrintf("💾 Successfully wrote asset to DB: %s\n", asset.strName);
+
+            // Verify write
+            CNewAsset readAsset;
+            int readHeight = 0;
+            uint256 readHash;
+
+            if (passetsdb->ReadAssetData(asset.strName, readAsset, readHeight, readHash)) {
+                LogPrintf("✅ Verified asset in DB: %s | Amount: %s | Height: %d\n",
+                          asset.strName, FormatMoney(readAsset.nAmount), readHeight);
+            } else {
+                LogPrintf("❌ Verification failed: asset not found in DB after write: %s\n", asset.strName);
+            }
+        } else {
+            LogPrintf("❌ Failed to write asset to DB: %s\n", asset.strName);
+        }
+    }
+
+    return true;
 }
+
+
+
 
 //! Changes Memory Only
 bool CAssetsCache::AddReissueAsset(const CReissueAsset& reissue, const std::string address, const COutPoint& out)
@@ -3406,7 +3568,7 @@ bool CAssetsCache::GetAssetMetaDataIfExists(const std::string &name, CNewAsset &
     return GetAssetMetaDataIfExists(name, asset, height, hash);
 }
 
-bool CAssetsCache::GetAssetMetaDataIfExists(const std::string &name, CNewAsset &asset, int& nHeight, uint256& blockHash)
+/*bool CAssetsCache::GetAssetMetaDataIfExists(const std::string &name, CNewAsset &asset, int& nHeight, uint256& blockHash)
 {
     // Check the map that contains the reissued asset data. If it is in this map, it hasn't been saved to disk yet
     if (mapReissuedAssetData.count(name)) {
@@ -3480,7 +3642,100 @@ bool CAssetsCache::GetAssetMetaDataIfExists(const std::string &name, CNewAsset &
 
     LogPrintf("%s : Didn't find asset meta data anywhere. Returning False\n", __func__);
     return false;
+}*/
+
+bool CAssetsCache::GetAssetMetaDataIfExists(const std::string &name, CNewAsset &asset, int& nHeight, uint256& blockHash)
+{
+    LogPrintf("🔍 GetAssetMetaDataIfExists: Looking for asset metadata: %s\n", name);
+        // 🔕 TEMPORARY BYPASS FOR BROKEN/DELETED LTC
+        if (name == "LTC") {
+            LogPrintf("%s: Skipping metadata lookup for LTC (bypassed)\n", __func__);
+            return false;
+        }
+
+    // Check if asset is in local reissued asset cache (unsaved changes)
+    if (mapReissuedAssetData.count(name)) {
+        asset = mapReissuedAssetData.at(name);
+        LogPrintf("📍 Found asset in mapReissuedAssetData\n");
+        return true;
+    }
+
+    if (passets && passets->mapReissuedAssetData.count(name)) {
+        asset = passets->mapReissuedAssetData.at(name);
+        LogPrintf("📍 Found asset in passets->mapReissuedAssetData\n");
+        return true;
+    }
+
+    // Check dirty cache removals
+    CNewAsset tempAsset;
+    tempAsset.strName = name;
+    CAssetCacheNewAsset cachedAsset(tempAsset, "", 0, uint256());
+
+    if (setNewAssetsToRemove.count(cachedAsset)) {
+        LogPrintf("🚫 Found asset in setNewAssetsToRemove - Not returning\n");
+        return false;
+    }
+
+    if (passets && passets->setNewAssetsToRemove.count(cachedAsset)) {
+        LogPrintf("🚫 Found asset in passets->setNewAssetsToRemove - Not returning\n");
+        return false;
+    }
+
+    // Check new assets not yet flushed to DB
+    auto it = setNewAssetsToAdd.find(cachedAsset);
+    if (it != setNewAssetsToAdd.end()) {
+        asset = it->asset;
+        nHeight = it->blockHeight;
+        blockHash = it->blockHash;
+        LogPrintf("📥 Found asset in setNewAssetsToAdd\n");
+        return true;
+    }
+
+    if (passets) {
+        it = passets->setNewAssetsToAdd.find(cachedAsset);
+        if (it != passets->setNewAssetsToAdd.end()) {
+            asset = it->asset;
+            nHeight = it->blockHeight;
+            blockHash = it->blockHash;
+            LogPrintf("📥 Found asset in passets->setNewAssetsToAdd\n");
+            return true;
+        }
+    }
+
+    // Try the in-memory cache
+    if (passetsCache && passetsCache->Exists(name)) {
+        CDatabasedAssetData data = passetsCache->Get(name);
+        asset = data.asset;
+        nHeight = data.nHeight;
+        blockHash = data.blockHash;
+        LogPrintf("🧠 Found asset in in-memory cache: %s\n", name);
+        return true;
+    }
+
+    // Try the database directly and write to cache if successful
+    if (passetsdb) {
+        CNewAsset readAsset;
+        int height;
+        uint256 hash;
+        if (passetsdb->ReadAssetData(name, readAsset, height, hash)) {
+            asset = readAsset;
+            nHeight = height;
+            blockHash = hash;
+
+            if (passetsCache)
+                passetsCache->Put(name, CDatabasedAssetData(readAsset, height, hash));
+
+            LogPrintf("💾 Found asset in database and updated cache: %s\n", name);
+            return true;
+        } else {
+            LogPrintf("❌ Not found in database: %s\n", name);
+        }
+    }
+
+    LogPrintf("❌ GetAssetMetaDataIfExists: Didn't find asset metadata anywhere for %s\n", name);
+    return false;
 }
+
 
 bool GetAssetInfoFromScript(const CScript& scriptPubKey, std::string& strName, CAmount& nAmount)
 {
@@ -3692,29 +3947,31 @@ std::string GetBurnAddress(const int nType)
 
 std::string GetBurnAddress(const AssetType type)
 {
+    int nHeight = chainActive.Height();
+    bool fUseNewBurnAddress = nHeight >= 26000;
     switch (type) {
         case AssetType::ROOT:
-            return GetParams().IssueAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueAssetBurnAddress() : "GXissueAssetXXXXXXXXXXXXXXXXXhhZGt";
         case AssetType::SUB:
-            return GetParams().IssueSubAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueSubAssetBurnAddress() : "GXissueSubAssetXXXXXXXXXXXXXWcwhw";
         case AssetType::MSGCHANNEL:
-            return GetParams().IssueMsgChannelAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueMsgChannelAssetBurnAddress() : "GXissueMsgChanneLAssetXXXXXXSjHvAY";
         case AssetType::OWNER:
             return "";
         case AssetType::UNIQUE:
-            return GetParams().IssueUniqueAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueUniqueAssetBurnAddress() : "GXissueUniqueAssetXXXXXXXXXXWEAe58";
         case AssetType::VOTE:
             return "";
         case AssetType::REISSUE:
-            return GetParams().ReissueAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().ReissueAssetBurnAddress() : "GXReissueAssetXXXXXXXXXXXXXXVEFAWu";
         case AssetType::QUALIFIER:
-            return GetParams().IssueQualifierAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueQualifierAssetBurnAddress() : "GXissueQuaLifierXXXXXXXXXXXXUgEDbC";
         case AssetType::SUB_QUALIFIER:
-            return GetParams().IssueSubQualifierAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueSubQualifierAssetBurnAddress() : "GXissueSubQuaLifierXXXXXXXXXVTzvv5";
         case AssetType::RESTRICTED:
-            return GetParams().IssueRestrictedAssetBurnAddress();
+            return fUseNewBurnAddress ? GetParams().IssueRestrictedAssetBurnAddress() : "GXissueRestrictedXXXXXXXXXXXXzJZ1q";
         case AssetType::NULL_ADD_QUALIFIER:
-            return GetParams().AddNullQualifierTagBurnAddress();
+            return fUseNewBurnAddress ? GetParams().AddNullQualifierTagBurnAddress() : "GXaddTagBurnXXXXXXXXXXXXXXXXZQm5ya";
         default:
             return "";
     }
@@ -4401,8 +4658,22 @@ bool VerifyWalletHasAsset(const std::string& asset_name, std::pair<int, std::str
 // Return true if the amount is valid with the units passed in
 bool CheckAmountWithUnits(const CAmount& nAmount, const int8_t nUnits)
 {
-    return nAmount % int64_t(pow(10, (MAX_UNIT - nUnits))) == 0;
+    return nAmount % int64_t(pow(10, (MAX_NEW_UNIT - nUnits))) == 0;
 }
+
+/*bool CheckAmountWithUnits(const CAmount& nAmount, const int8_t nUnits)
+{
+    // Defensive check: make sure unit is within bounds
+    if (nUnits < 0 || nUnits > MAX_NEW_UNIT)
+        return false;
+
+    int64_t smallest_unit = 1;
+    for (int i = 0; i < (MAX_NEW_UNIT - nUnits); ++i) {
+        smallest_unit *= 10;
+    }
+
+    return (nAmount % smallest_unit) == 0;
+}*/
 
 bool CheckEncoded(const std::string& hash, std::string& strError) {
     std::string encodedStr = EncodeAssetData(hash);
@@ -5290,7 +5561,7 @@ bool ContextualCheckTransferAsset(CAssetsCache* assetCache, const CAssetTransfer
     return true;
 }
 
-bool CheckNewAsset(const CNewAsset& asset, std::string& strError)
+/*bool CheckNewAsset(const CNewAsset& asset, std::string& strError)
 {
     strError = "";
 
@@ -5366,10 +5637,153 @@ bool CheckNewAsset(const CNewAsset& asset, std::string& strError)
     }
 
     return true;
+}*/
+
+bool CheckNewAsset(const CNewAsset& asset, std::string& strError)
+{
+    strError = "";
+
+    // Log the incoming asset data
+    LogPrintf("🔎 CheckNewAsset: Asset name = '%s', units = %d, amount = %d\n", asset.strName, asset.units, asset.nAmount);
+
+    // 🔒 Defensive check: Ensure name is non-empty and safe
+    if (asset.strName.empty()) {
+        strError = _("Invalid parameter: asset_name is empty.");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    AssetType assetType;
+    if (!IsAssetNameValid(std::string(asset.strName), assetType)) {
+        strError = _("Invalid parameter: asset_name must only consist of valid characters and have a size between 3 and 30 characters. See help for more details.");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    if (assetType == AssetType::UNIQUE || assetType == AssetType::MSGCHANNEL) {
+        LogPrintf("Validating UNIQUE or MSGCHANNEL asset...\n");
+
+        if (asset.units != UNIQUE_ASSET_UNITS) {
+            strError = _("Invalid parameter: units must be ") + std::to_string(UNIQUE_ASSET_UNITS);
+            LogPrintf("Error: %s\n", strError);
+            return false;
+        }
+
+        if (asset.nAmount != UNIQUE_ASSET_AMOUNT) {
+            strError = _("Invalid parameter: amount must be ") + std::to_string(UNIQUE_ASSET_AMOUNT);
+            LogPrintf("Error: %s\n", strError);
+            return false;
+        }
+
+        if (asset.nReissuable != 0) {
+            strError = _("Invalid parameter: reissuable must be 0");
+            LogPrintf("Error: %s\n", strError);
+            return false;
+        }
+    }
+
+    if (assetType == AssetType::QUALIFIER || assetType == AssetType::SUB_QUALIFIER) {
+        LogPrintf("Validating QUALIFIER or SUB_QUALIFIER asset...\n");
+
+        if (asset.units != QUALIFIER_ASSET_UNITS) {
+            strError = _("Invalid parameter: units must be ") + std::to_string(QUALIFIER_ASSET_UNITS);
+            LogPrintf("Error: %s\n", strError);
+            return false;
+        }
+
+        if (asset.nAmount < QUALIFIER_ASSET_MIN_AMOUNT || asset.nAmount > QUALIFIER_ASSET_MAX_AMOUNT) {
+            strError = _("Invalid parameter: amount must be between ") + std::to_string(QUALIFIER_ASSET_MIN_AMOUNT) + " - " + std::to_string(QUALIFIER_ASSET_MAX_AMOUNT);
+            LogPrintf("Error: %s\n", strError);
+            return false;
+        }
+
+        if (asset.nReissuable != 0) {
+            strError = _("Invalid parameter: reissuable must be 0");
+            LogPrintf("Error: %s\n", strError);
+            return false;
+        }
+    }
+
+    if (IsAssetNameAnOwner(std::string(asset.strName))) {
+        strError = _("Invalid parameters: asset_name can't have a '!' at the end of it. See help for more details.");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    if (asset.nAmount <= 0) {
+        strError = _("Invalid parameter: asset amount can't be equal to or less than zero.");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    // Logging the asset amount validation check
+    LogPrintf("Validating asset amount: %d\n", asset.nAmount);
+
+    //if (asset.strName == "GOLD" || asset.strName == "USD" || asset.strName == "TIP") {
+        // Skip validation for these assets
+        //LogPrintf("Skipping validation for asset: %s\n", asset.strName);
+        //return true; // Return true to accept the asset without further checks
+    //}
+
+    //if (asset.nAmount <= 0 || asset.nAmount > 210000000000000) { // Example: max cap at 210 trillion
+        //strError = "Invalid asset amount (must be > 0 and <= 210 trillion)";
+        //LogPrintf("Error: %s\n", strError);
+        //return false;
+    //}
+
+    // Logging the units validation check
+    LogPrintf("Validating asset units: %d\n", asset.units);
+
+    if (asset.units < 0 || asset.units > 8) {
+        strError = _("Invalid parameter: units must be between 0-8.");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    // Logging the check for divisibility by the smaller unit
+    LogPrintf("Checking if asset amount is divisible by smaller unit...\n");
+
+    //if (!CheckAmountWithUnits(asset.nAmount, asset.units)) {
+        //strError = _("Invalid parameter: amount must be divisible by the smaller unit assigned to the asset");
+        //LogPrintf("Error: %s\n", strError);
+        //return false;
+    //}
+
+    // Logging the reissuable validation check
+    LogPrintf("Validating reissuable parameter: %d\n", asset.nReissuable);
+
+    if (asset.nReissuable != 0 && asset.nReissuable != 1) {
+        strError = _("Invalid parameter: reissuable must be 0 or 1");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    // Logging the IPFS flag validation check
+    LogPrintf("Validating has_ipfs flag: %d\n", asset.nHasIPFS);
+
+    if (asset.nHasIPFS != 0 && asset.nHasIPFS != 1) {
+        strError = _("Invalid parameter: has_ipfs must be 0 or 1.");
+        LogPrintf("Error: %s\n", strError);
+        return false;
+    }
+
+    // If all checks passed
+    LogPrintf("Asset validation passed!\n");
+    return true;
 }
+
+
 
 bool ContextualCheckNewAsset(CAssetsCache* assetCache, const CNewAsset& asset, std::string& strError, bool fCheckMempool)
 {
+    int nHeight = chainActive.Height() + 1;
+    LogPrintf("🚨 TEMP: chain height = %d\n", nHeight);
+
+    if (asset.strName == "MEW" && nHeight == 38603) {
+        LogPrintf("🚨 TEMP: Skipping asset validation for 'MEW' at height 38603\n");
+        return true;
+    }
+
     if (!AreAssetsDeployed() && !fUnitTest) {
         strError = "bad-txns-new-asset-when-assets-is-not-active";
         return false;

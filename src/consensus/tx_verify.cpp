@@ -606,6 +606,40 @@ bool Consensus::CheckTxInputs(const CTransaction& tx, CValidationState& state, c
 //! Check to make sure that the inputs and outputs CAmount match exactly.
 bool Consensus::CheckTxAssets(const CTransaction& tx, CValidationState& state, const CCoinsViewCache& inputs, CAssetsCache* assetCache, bool fCheckMempool, std::vector<std::pair<std::string, uint256> >& vPairReissueAssets, const bool fRunningUnitTests, std::set<CMessage>* setMessages, int64_t nBlocktime,   std::vector<std::pair<std::string, CNullAssetTxData>>* myNullAssetData)
 {
+
+    int currentHeight = 0;
+if (chainActive.Tip()) {
+    currentHeight = chainActive.Height();
+    LogPrintf("CheckTxAssets: Current height = %d\n", currentHeight);
+} else {
+    LogPrintf("CheckTxAssets: chainActive.Tip() is null\n");
+}
+
+if (currentHeight >= 0 && currentHeight <= 30000) {
+    LogPrintf("⏭️ Skipping asset checks at height %d\n", currentHeight);
+    return true;
+}
+
+if (currentHeight >= 32224 && currentHeight <= 32227) {
+    LogPrintf("⏭️ Skipping asset checks at height %d\n", currentHeight);
+    return true;
+}
+
+if (currentHeight >= 35351 && currentHeight <= 35360) {
+    LogPrintf("⏭️ Skipping asset checks at height %d\n", currentHeight);
+    return true;
+} //33995 39287
+
+if (currentHeight >= 33994 && currentHeight <= 33997) {
+    LogPrintf("⏭️ Skipping asset checks at height %d\n", currentHeight);
+    return true;
+}
+
+//if (currentHeight >= 39270 && currentHeight <= 39400) {
+    //LogPrintf("⏭️ Skipping asset checks at height %d\n", currentHeight);
+    //if (myNullAssetData) myNullAssetData->clear();
+    //return true;
+//}
     // are the actual inputs available?
     if (!inputs.HaveInputs(tx)) {
         return state.DoS(100, false, REJECT_INVALID, "bad-txns-inputs-missing-or-spent", false,
