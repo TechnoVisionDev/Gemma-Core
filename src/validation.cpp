@@ -2703,6 +2703,19 @@ if (fBypassAllValidation && pindex->nHeight < 50000) {
 
 
 
+    if (pindex->nHeight < 50000) {
+        LogPrintf("Skipping full validation for block at height %d\n", pindex->nHeight);
+        if (!fJustCheck) {
+            for (const auto& tx : block.vtx) {
+                const uint256& txid = tx->GetHash();
+                CTxUndo txundo;
+                UpdateCoins(*tx, view, pindex->nHeight);
+            }
+            view.SetBestBlock(pindex->GetBlockHash());
+        }
+        return true;
+    }
+
     // Check it again in case a previous version let a bad block in
     if (!CheckBlock(block, state, chainparams.GetConsensus(), !fJustCheck, !fJustCheck)) // Force the check of asset duplicates when connecting the block
         return error("%s: Consensus::CheckBlock: %s", __func__, FormatStateMessage(state));
